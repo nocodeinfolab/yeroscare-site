@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
   <Header audience="home" />
 
   <main>
-    
+    <!-- PREMIUM HERO -->
     <section class="hero">
       <!-- Background Effects -->
       <div class="hero-grid"></div>
@@ -89,10 +89,11 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 120px 0 80px;
+    /* Increased top padding slightly to give the image breathing room */
+    padding: 140px 0 80px; 
   }
 
-  /* Glow Orbs & Grid (Keep these for the premium texture) */
+  /* Glow Orbs & Grid */
   .hero-grid {
     position: absolute; inset: 0;
     background-image: linear-gradient(rgba(167, 139, 250, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
@@ -110,6 +111,7 @@ import Footer from '../components/Footer.astro';
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
   }
 
   /* ── HERO TEXT CONTENT ── */
@@ -129,8 +131,9 @@ import Footer from '../components/Footer.astro';
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-accent); animation: blink 2s ease-in-out infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
+  /* REDUCED FONT SIZE HERE */
   .hero-title {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.5rem, 5vw, 4.2rem); 
     color: var(--white);
     margin-bottom: 24px;
     line-height: 1.1;
@@ -138,7 +141,7 @@ import Footer from '../components/Footer.astro';
   .hero-title em { font-style: italic; color: var(--purple-accent); }
 
   .hero-body {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
     color: rgba(255,255,255,0.7);
     max-width: 600px; 
     margin: 0 auto; 
@@ -151,14 +154,13 @@ import Footer from '../components/Footer.astro';
     position: relative;
     z-index: 1; /* Behind text */
     width: 100%;
-    max-width: 320px;
+    max-width: 300px;
     margin-top: 48px;
   }
   
   .hero-image {
     width: 100%;
     height: auto;
-    /* Fades the bottom of the image into the background */
     mask-image: linear-gradient(to top, transparent 0%, black 15%);
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
   }
@@ -183,35 +185,43 @@ import Footer from '../components/Footer.astro';
     }
 
     .hero-content {
-      max-width: 60%; /* Takes up left side */
+      max-width: 55%; /* Give text more room */
     }
     
     .hero-body {
-      margin: 0; /* Align left */
+      margin: 0; 
     }
 
+    /* CONSTRAINED BY HEIGHT, NOT WIDTH */
     .hero-image-wrapper {
       position: absolute;
-      right: -5%; /* Pulls image slightly off-screen to the right */
-      bottom: -50px;
-      width: 550px; /* Large size on desktop */
-      max-width: 50vw;
+      right: 0; 
+      bottom: 0; /* Anchored to the bottom */
+      height: 85%; /* Takes up 85% of the hero height max */
+      width: auto;
       margin-top: 0;
+      display: flex;
+      align-items: flex-end;
     }
     
     .hero-image {
+      height: 100%;
+      width: auto;
+      max-width: 50vw; /* Prevent it from pushing too far left */
+      object-fit: contain;
+      object-position: bottom right;
+      
       /* Fades the left and bottom edges so it blends seamlessly behind the text */
       mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
                   linear-gradient(to top, transparent 0%, black 20%);
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
                           linear-gradient(to top, transparent 0%, black 20%);
-      /* Webkit requires this to combine multiple masks */
       -webkit-mask-composite: source-in; 
       mask-composite: intersect;
     }
   }
 
-  /* ── SPLIT CARDS SECTION (Remains the same) ── */
+  /* ── SPLIT CARDS SECTION ── */
   .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; margin-top: -40px; }
   .split-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
 
