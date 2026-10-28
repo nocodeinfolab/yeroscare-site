@@ -1,360 +1,303 @@
 ---
+// src/pages/doctors.astro
 import Layout from '../layouts/Layout.astro';
-
-const stores = [
-  { href: __APPSTORE_URL__, line: 'Download on the', name: 'App Store' },
-  { href: __PLAY_URL__, line: 'Get it on', name: 'Google Play' },
-];
-const SUPPORT_EMAIL = __SUPPORT_EMAIL__;
-const LEGAL_URL = __LEGAL_URL__;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AppCTA from '../components/AppCTA.astro';
 ---
 
-<Layout
-  title="YerosCare for doctors: turn suitable enquiries into booked consultations"
-  description="Share your YerosCare link, set your own hours and prices, and get paid automatically 24 hours after each consultation. Start with 30 days free on the Starter plan."
-  page="doctors"
-  ctaLabel="Join as a doctor"
+<Layout 
+  title="YerosCare for Doctors - Turn Enquiries into Consultations" 
+  description="Stop chasing DMs. Share your YerosCare link so patients can view your details and book paid consultations. Flexible hours, automatic payouts."
 >
-  <!-- ═════ AWARENESS: why does this matter to me? ═════ -->
+  <Header audience="doctors" />
 
-  <section class="hero hero-dark on-dark">
-    <div class="wrap hero-grid">
-      <div>
-        <h1>Turn suitable enquiries into booked consultations.</h1>
-        <p class="lede">
-          Share your YerosCare link so people can see your services, fees and available times before
-          they book. You set your own hours and your own prices.
-        </p>
-        <div class="hero-actions">
-          <div class="stores">
-            {
-              stores.map((s) => (
-                <a class="store" href={s.href}>
-                  <span>{s.line}</span>
-                  <strong>{s.name}</strong>
-                </a>
-              ))
-            }
-          </div>
-          <a class="btn btn-outline" href="#plans">See the plans</a>
-        </div>
-        <p class="hero-note"><b>30 days free</b> on the Starter plan.</p>
-      </div>
-
-      <!--
-        This phone is an illustration. When you have a real screenshot, save it as
-        public/phone-doctor.webp and replace the whole <div class="phone-wrap"> block with:
-        <img src="/phone-doctor.webp" alt="..." width="560" height="1100" />
-      -->
-      <div class="phone-wrap">
-        <div class="phone" role="img" aria-label="Illustration of a doctor's shareable YerosCare link, services and working days">
-          <div class="phone-screen" aria-hidden="true">
-            <p class="phone-label">Your YerosCare link</p>
-            <div class="link-box"><span>yeroscare.com/d/your-name</span><span>Copy</span></div>
-            <p class="phone-label">Services you offer</p>
-            <ul class="chips">
-              <li class="chip">Video</li>
-              <li class="chip">Voice</li>
-              <li class="chip">Chat</li>
-              <li class="chip">Home service</li>
-            </ul>
-            <p class="phone-label">Working days</p>
-            <ul class="chips">
-              <li class="slot">Mon</li>
-              <li class="slot">Wed</li>
-              <li class="slot">Fri</li>
-            </ul>
-            <span class="skel"></span>
-            <span class="skel" style="width: 65%"></span>
+  <main>
+    <!-- STAGE 1: AWARENESS (Why should I care?) -->
+    <section class="stage-section stage-awareness">
+      <div class="container split-layout">
+        <div class="content-left">
+          <span class="stage-badge">For Medical Professionals</span>
+          <h1>Turn suitable enquiries into paid consultations.</h1>
+          <p class="lead-text">
+            Receiving consultation requests in your WhatsApp, Instagram, or Facebook messages? 
+            Give suitable enquiries a clear, professional next step.
+          </p>
+          <p>
+            Join YerosCare and connect with patients seeking your expertise. Share your unique booking link so patients can view your consultation details and available appointments before booking.
+          </p>
+          <div class="cta-group">
+            <AppCTA text="Apply to Join" class="btn-large" />
           </div>
         </div>
-        <p class="caption">Illustrative screen</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap benefits">
-    <div class="benefit">
-      <h3>Your hours</h3>
-      <p>Choose your working days and hours. Patients see them as your availability.</p>
-    </div>
-    <div class="benefit">
-      <h3>Your prices</h3>
-      <p>Set your own fee for each service you offer: video, voice, chat or home service.</p>
-    </div>
-    <div class="benefit">
-      <h3>A verified listing</h3>
-      <p>We verify your MDCN licence before patients can see your profile.</p>
-    </div>
-    <div class="benefit">
-      <h3>Automatic payouts</h3>
-      <p>You are paid 24 hours after each completed consultation.</p>
-    </div>
-  </div>
-
-  <!-- ═════ CONSIDERATION: would this work for me? ═════ -->
-
-  <section class="section section-tint" id="link">
-    <div class="wrap split">
-      <div>
-        <h2>Getting consultation requests in your messages? Give them a clear next step.</h2>
-      </div>
-      <div>
-        <p>
-          Paste your YerosCare link into a reply or your profile. People can see your services,
-          fees and available times, then book and pay in the app. If they do not have the app yet,
-          the link sends them to the store.
-        </p>
-        <p>
-          YerosCare does not read your WhatsApp, Facebook, Instagram or X messages. You share your
-          link yourself, wherever people are already asking.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="how-it-works">
-    <div class="wrap split">
-      <div>
-        <h2>How it works</h2>
-        <p>From sign-up to payout, everything happens in the app.</p>
-      </div>
-      <ol class="steps">
-        <li>
-          <div>
-            <h3>Sign in with your email</h3>
-            <p>Download YerosCare and use your email address to get started.</p>
+        <div class="visual-right">
+          <!-- Placeholder for Doctor Image -->
+          <div class="visual-placeholder">
+            <p>Doctor Image or App Workflow Mockup</p>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>Add your professional details</h3>
-            <p>Give us your professional information and your MDCN licence number.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: CONSIDERATION (Is this right for me?) -->
+    <section class="stage-section stage-workflow">
+      <div class="container">
+        <div class="section-header">
+          <h2>See the consultation workflow</h2>
+          <p>From patient enquiry to completed consultation, everything is handled in one place.</p>
+        </div>
+
+        <div class="workflow-grid">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <h3>Share your link</h3>
+            <p>Share your YerosCare profile with patients on social media or via direct message.</p>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>We verify your licence</h3>
-            <p>You can see your verification status in the app. Patients see your profile once you are verified.</p>
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <h3>Patient books</h3>
+            <p>Patients view your services, fees, and available hours, then book and pay directly in the app.</p>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>Set your services, prices and hours</h3>
-            <p>Choose what you offer, what you charge for each service, and the days and hours you work.</p>
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+            <h3>Consultation</h3>
+            <p>Consult via video, voice, or chat on our secure platform. Offer home visits if you choose.</p>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>Share your link and consult</h3>
-            <p>Patients book and pay in the app. You consult, and your payout follows automatically.</p>
+          <div class="workflow-step">
+            <div class="step-number">4</div>
+            <h3>Automatic Payout</h3>
+            <p>Receive your payout automatically 24 hours after the consultation is completed.</p>
           </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section section-tint" id="plans">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Plans and commission</h2>
-        <p>
-          The three plans differ only in the monthly fee and the commission on each consultation.
-          Every plan has the same features.
-        </p>
+        </div>
       </div>
+    </section>
 
-      <p class="trial">30 days free on the Starter plan. Commission still applies to each consultation.</p>
-
-      <div class="table-wrap">
-        <table class="plans">
-          <thead>
-            <tr>
-              <th scope="col">Plan</th>
-              <th scope="col">Monthly fee</th>
-              <th scope="col">Commission on each consultation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Starter</th>
-              <td><strong>₦5,000</strong></td>
-              <td><strong>5%</strong></td>
-            </tr>
-            <tr>
-              <th scope="row">Professional</th>
-              <td><strong>₦10,000</strong></td>
-              <td><strong>3%</strong></td>
-            </tr>
-            <tr>
-              <th scope="row">Premium</th>
-              <td><strong>₦20,000</strong></td>
-              <td><strong>1%</strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 style="margin-top: 2.5rem">Which plan costs you least?</h3>
-      <ul class="ticks">
-        <li>If patients pay you less than ₦250,000 a month in consultation fees, Starter costs you least.</li>
-        <li>Between ₦250,000 and ₦500,000 a month, Professional costs you least.</li>
-        <li>Above ₦500,000 a month, Premium costs you least.</li>
-      </ul>
-      <p class="small" style="margin-top: 1rem">
-        For example, on a ₦20,000 consultation the commission is ₦1,000 on Starter, ₦600 on
-        Professional and ₦200 on Premium. This is a guide to what you pay us, not a promise of what
-        you will earn.
-      </p>
-    </div>
-  </section>
-
-  <section class="section" id="payouts">
-    <div class="wrap split">
-      <div>
-        <h2>Paid automatically, 24 hours after each consultation</h2>
-      </div>
-      <div>
-        <p class="equation">
-          <span>What the patient paid</span>
-          <i>minus</i>
-          <span>your plan's commission</span>
-          <i>equals</i>
-          <span>what you receive</span>
-        </p>
-        <p>
-          Your payout arrives 24 hours after the consultation is completed. Doctors pay no payment
-          processing charges.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint" id="responsibilities">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Who does what</h2>
-      </div>
-      <div class="cols">
-        <div>
-          <h3>You are responsible for</h3>
-          <ul class="ticks">
-            <li>The clinical advice you give.</li>
-            <li>Keeping your profile, services and availability accurate.</li>
+    <!-- STAGE 2.5: Built for your practice (Flexibility & Trust) -->
+    <section class="stage-section stage-benefits">
+      <div class="container split-layout reverse">
+        <div class="visual-left">
+          <div class="visual-placeholder bg-purple-light">
+            <p>App Screen: Setting Availability & MDCN Status</p>
+          </div>
+        </div>
+        <div class="content-right">
+          <h2>Built for your practice.</h2>
+          <ul class="benefit-list">
             <li>
-              Responding within 48 hours when a patient asks to cancel a paid consultation. If you do
-              not respond, the patient's refund goes ahead.
+              <strong>Total flexibility:</strong> Set your own working days and hours. Patients only see the availability you choose.
             </li>
-          </ul>
-        </div>
-        <div>
-          <h3>YerosCare handles</h3>
-          <ul class="ticks">
-            <li>Verifying your MDCN licence before patients see your profile.</li>
-            <li>Taking payment from patients in the app.</li>
-            <li>Paying you automatically, 24 hours after each completed consultation.</li>
             <li>
-              Support: email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+              <strong>Verified trust:</strong> Provide your MDCN license number during onboarding. Once verified, your profile is visible to patients, giving them confidence in your expertise.
+            </li>
+            <li>
+              <strong>Home service controls:</strong> If you offer home visits, you define the specific areas you cover, and patients see this before booking.
+            </li>
+            <li>
+              <strong>Zero processor fees:</strong> Your payout is simply the amount the patient paid, minus the platform commission. We handle the payment processing costs.
             </li>
           </ul>
         </div>
       </div>
-      <p class="small" style="margin-top: 2rem">
-        The full terms are at <a href={LEGAL_URL}>{LEGAL_URL.replace('https://', '')}</a>.
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═════ DECISION: what happens next? ═════ -->
+    <!-- STAGE 3: DECISION (How do I get started?) -->
+    <section class="stage-section stage-pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Simple, transparent plans</h2>
+          <p>Start with a <strong>30-day free trial</strong> (Starter tier). Commission still applies during the trial.</p>
+        </div>
 
-  <section class="section" id="join">
-    <div class="wrap split">
-      <div>
-        <h2>What you need to join</h2>
+        <div class="pricing-grid">
+          
+          <!-- Starter Plan -->
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">₦5,000<span>/month</span></div>
+            <p class="commission">5% platform commission per consultation</p>
+            <ul class="pricing-features">
+              <li>✓ Shareable booking link</li>
+              <li>✓ Video, voice & chat</li>
+              <li>✓ Automatic payouts</li>
+              <li>✓ 30-day free trial</li>
+            </ul>
+            <AppCTA text="Start Free Trial" variant="outline" class="w-full" />
+          </div>
+
+          <!-- Professional Plan -->
+          <div class="pricing-card featured">
+            <div class="featured-badge">Most Popular</div>
+            <h3>Professional</h3>
+            <div class="price">₦10,000<span>/month</span></div>
+            <p class="commission">3% platform commission per consultation</p>
+            <ul class="pricing-features">
+              <li>✓ Everything in Starter</li>
+              <li>✓ Lower commission rate</li>
+              <li>✓ Priority support</li>
+            </ul>
+            <AppCTA text="Apply to Join" class="w-full" />
+          </div>
+
+          <!-- Premium Plan -->
+          <div class="pricing-card">
+            <h3>Premium</h3>
+            <div class="price">₦20,000<span>/month</span></div>
+            <p class="commission">1% platform commission per consultation</p>
+            <ul class="pricing-features">
+              <li>✓ Everything in Professional</li>
+              <li>✓ Lowest commission rate</li>
+              <li>✓ Ideal for high-volume practices</li>
+            </ul>
+            <AppCTA text="Apply to Join" variant="outline" class="w-full" />
+          </div>
+
+        </div>
       </div>
-      <div>
-        <ul class="ticks" style="margin-top: 0">
-          <li>An email address to sign in with.</li>
-          <li>Your professional details.</li>
-          <li>Your MDCN licence number.</li>
-        </ul>
-        <p style="margin-top: 1.5rem">
-          After you submit your details, we verify your licence. You can check your status in the
-          app, and patients can see your profile once you are verified.
+    </section>
+
+    <!-- Final Onboarding Call to Action -->
+    <section class="stage-section stage-onboarding">
+      <div class="container text-center-container">
+        <h2>Ready to offer consultations?</h2>
+        <p class="lead-text">
+          Complete a simple onboarding process. Download the app, log in with your email, and provide your professional information and MDCN license number. 
         </p>
+        
+        <div class="cta-group center-cta">
+          <AppCTA text="Download App to Apply" class="btn-large" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-tint" id="faq">
-    <div class="wrap split">
-      <div>
-        <h2>Questions doctors ask</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>Is there a free trial?</summary>
-          <p>
-            Yes. You get 30 days free on the Starter plan. Commission still applies to every
-            consultation during the trial.
-          </p>
-        </details>
-        <details>
-          <summary>Who sets my prices?</summary>
-          <p>
-            You do. Set a fee for each service you offer. Patients see your fees before they book.
-          </p>
-        </details>
-        <details>
-          <summary>Can I choose my own working hours?</summary>
-          <p>
-            Yes. You pick your working days and hours, and patients see them as your availability.
-          </p>
-        </details>
-        <details>
-          <summary>When do I get paid?</summary>
-          <p>
-            Automatically, 24 hours after a consultation is completed. You receive what the patient
-            paid minus your plan's commission.
-          </p>
-        </details>
-        <details>
-          <summary>Are there payment processing charges?</summary>
-          <p>No. Doctors pay no payment processing charges.</p>
-        </details>
-        <details>
-          <summary>What happens if a patient cancels?</summary>
-          <p>
-            A patient can request cancellation of a paid service that has not taken place. We tell
-            you, and you are expected to respond within 48 hours. If you do not respond, the refund
-            goes ahead.
-          </p>
-        </details>
-        <details>
-          <summary>How do I know when I am verified?</summary>
-          <p>You can see your verification status in the app.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <section class="section section-dark on-dark" id="get">
-    <div class="wrap">
-      <h2>Ready to offer consultations?</h2>
-      <p class="lede">
-        Download YerosCare, sign in with your email and add your details. Your first 30 days on the
-        Starter plan are free.
-      </p>
-      <div class="stores">
-        {
-          stores.map((s) => (
-            <a class="store" href={s.href}>
-              <span>{s.line}</span>
-              <strong>{s.name}</strong>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <Footer />
 </Layout>
+
+<style>
+  /* Inheriting many styles from patients.astro, but adjusting for the Doctor theme */
+  .stage-section {
+    padding: 5rem 0;
+  }
+
+  .stage-awareness { background-color: var(--color-bg-light); padding-top: 4rem; }
+  .stage-workflow { background-color: var(--color-bg-white); }
+  .stage-benefits { background-color: #F3F0F9; }
+  .stage-pricing { background-color: var(--color-bg-light); }
+  .stage-onboarding { background-color: var(--color-primary-dark); color: white; }
+
+  h1, h2, h3 { color: var(--color-primary-dark); }
+  .stage-onboarding h2 { color: white; }
+  
+  h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; font-weight: 800; }
+  h2 { font-size: 2rem; line-height: 1.3; margin-bottom: 1rem; }
+  h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+
+  .lead-text { font-size: 1.25rem; color: var(--color-text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+  .stage-onboarding .lead-text { color: #E9D5FF; }
+
+  .stage-badge {
+    display: inline-block;
+    background-color: #E9D5FF;
+    color: var(--color-primary-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  /* Layouts */
+  .split-layout { display: flex; flex-direction: column; gap: 3rem; align-items: center; }
+  .content-left, .content-right { flex: 1; }
+  .visual-right, .visual-left { flex: 1; width: 100%; }
+
+  .visual-placeholder {
+    width: 100%; height: 350px; background-color: #E5E7EB; border-radius: 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-text-muted); border: 2px dashed #D1D5DB;
+  }
+  .bg-purple-light { background-color: #EDE9FE; border-color: #C4B5FD; }
+
+  /* Workflow Grid */
+  .section-header { text-align: center; max-width: 600px; margin: 0 auto 3rem auto; }
+  
+  .workflow-grid {
+    display: grid; grid-template-columns: 1fr; gap: 2rem;
+  }
+  
+  .workflow-step {
+    background-color: var(--color-bg-light); padding: 2rem; border-radius: 1rem;
+    border: 1px solid #E5E7EB; position: relative;
+  }
+
+  .step-number {
+    width: 40px; height: 40px; background-color: var(--color-primary); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.25rem; margin-bottom: 1rem;
+  }
+
+  .workflow-step p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+  /* Benefit List */
+  .benefit-list { list-style: none; padding: 0; margin-top: 1.5rem; }
+  .benefit-list li {
+    position: relative; padding-left: 2rem; margin-bottom: 1.25rem; color: var(--color-text-muted);
+  }
+  .benefit-list li::before {
+    content: "✓"; position: absolute; left: 0; color: var(--color-primary);
+    font-weight: bold; font-size: 1.2rem;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+  
+  .pricing-card {
+    background-color: white; padding: 2.5rem 2rem; border-radius: 1.5rem;
+    border: 2px solid #E5E7EB; display: flex; flex-direction: column;
+    position: relative; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 25px -5px rgba(74, 27, 122, 0.15);
+  }
+
+  .featured-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background-color: var(--color-primary); color: white; padding: 0.25rem 1rem;
+    border-radius: 9999px; font-size: 0.875rem; font-weight: 600;
+  }
+
+  .price { font-size: 2.5rem; font-weight: 800; color: var(--color-primary-dark); margin: 1rem 0 0.5rem 0; }
+  .price span { font-size: 1rem; font-weight: 500; color: var(--color-text-muted); }
+  
+  .commission {
+    background-color: #F3F0F9; padding: 0.5rem; border-radius: 0.5rem;
+    font-weight: 600; font-size: 0.9rem; color: var(--color-primary-dark); margin-bottom: 1.5rem;
+  }
+
+  .pricing-features { list-style: none; padding: 0; margin-bottom: 2rem; flex-grow: 1; }
+  .pricing-features li { margin-bottom: 0.75rem; color: var(--color-text-muted); font-size: 0.95rem; }
+
+  /* CTA */
+  .cta-group { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .center-cta { align-items: center; }
+  .btn-large { padding: 1rem 2rem; font-size: 1.1rem; width: 100%; max-width: 300px; }
+  .w-full { width: 100%; text-align: center; display: block; }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .split-layout { flex-direction: row; gap: 4rem; }
+    .split-layout.reverse { flex-direction: row-reverse; }
+    
+    .workflow-grid { grid-template-columns: 1fr 1fr; } /* 2x2 */
+    .pricing-grid { grid-template-columns: 1fr 1fr 1fr; } /* 3 columns */
+    
+    .center-cta { justify-content: center; }
+    
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+    .visual-placeholder { height: 450px; }
+  }
+</style>
