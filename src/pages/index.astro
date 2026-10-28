@@ -17,28 +17,144 @@ import Footer from '../components/Footer.astro';
       <div class="hero-orb hero-orb-2"></div>
 
       <div class="container hero-layout">
-        
+
         <!-- Text Content (Left Side) -->
         <div class="hero-content">
           <div class="hero-eyebrow reveal">
             <span class="dot"></span> Now available in Nigeria
           </div>
-          
+
           <h1 class="hero-title reveal reveal-delay-1">
             Healthcare that fits<br><em>your life.</em>
           </h1>
-          
+
           <p class="hero-body reveal reveal-delay-2">
-            YerosCare connects patients with trusted doctors for online consultations, 
+            YerosCare connects patients with trusted doctors for online consultations,
             and helps doctors turn enquiries into paid consultations.
           </p>
         </div>
 
-        <!-- Image Content (Right Side, Behind Text) -->
+        <!-- Phone Mockup (built in HTML/CSS, no image file) -->
         <div class="hero-image-wrapper reveal reveal-delay-3">
-          <!-- The new glow effect behind the image -->
           <div class="image-backglow"></div>
-          <img src="/images/hero-doctor.png" alt="YerosCare Doctor Profile" class="hero-image" />
+
+          <div class="phone" role="img" aria-label="The YerosCare app showing Stephen Umana's doctor profile with video and voice consultation options">
+            <span class="side-btn sb-1"></span>
+            <span class="side-btn sb-2"></span>
+            <span class="side-btn sb-3"></span>
+            <span class="side-btn sb-4"></span>
+
+            <div class="phone-frame">
+              <div class="phone-bezel">
+                <div class="screen" aria-hidden="true">
+
+                  <!-- Header -->
+                  <div class="app-header">
+                    <div class="island"></div>
+                    <div class="status">
+                      <span class="time">9:41</span>
+                      <span class="status-icons">
+                        <svg viewBox="0 0 20 14" width="20" height="14" fill="#fff"><rect x="0" y="9" width="3.4" height="5" rx="1"/><rect x="5.4" y="6" width="3.4" height="8" rx="1"/><rect x="10.8" y="3" width="3.4" height="11" rx="1"/><rect x="16.2" y="0" width="3.4" height="14" rx="1"/></svg>
+                        <svg viewBox="0 0 20 14" width="19" height="14" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M2 5.2a11 11 0 0 1 16 0"/><path d="M5 8.4a6.6 6.6 0 0 1 10 0"/><circle cx="10" cy="11.8" r="1.2" fill="#fff" stroke="none"/></svg>
+                        <svg viewBox="0 0 30 14" width="30" height="14"><rect x="0.8" y="0.8" width="25" height="12.4" rx="4" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/><rect x="2.6" y="2.6" width="21.4" height="8.8" rx="2.6" fill="#fff"/><rect x="27" y="4.6" width="2" height="4.8" rx="1" fill="#fff" fill-opacity=".5"/></svg>
+                      </span>
+                    </div>
+                    <div class="header-row">
+                      <span class="back">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+                      </span>
+                      <div>
+                        <div class="header-eyebrow">Doctor Profile</div>
+                        <div class="header-name">Stephen Umana</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Body -->
+                  <div class="app-body">
+
+                    <div class="card profile-card">
+                      <img class="avatar" alt="" src="data:image/jpeg;base64,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" />
+                      <div class="profile-info">
+                        <div class="p-name">Stephen Umana</div>
+                        <span class="pill">General Practitioner</span>
+                        <div class="p-exp">4 years of experience</div>
+                      </div>
+                    </div>
+
+                    <div class="card about-card">
+                      <div class="label">About</div>
+                      <p>I am a General Practitioner passionate about providing quality, patient-centred care. I help patients understand their health concerns and make informed decisions about their wellbeing.</p>
+                    </div>
+
+                    <div class="card options-card">
+                      <div class="label">Consultation Options</div>
+
+                      <div class="option">
+                        <span class="radio"></span>
+                        <div class="opt-main">
+                          <div class="opt-title">Video Consultation</div>
+                          <div class="opt-dur">30 min</div>
+                          <div class="opt-time">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></svg>
+                            <span>Mon · 9 AM – 12 PM<br>Wed · 12 PM – 2 PM</span>
+                          </div>
+                        </div>
+                        <div class="opt-price">₦20,000</div>
+                      </div>
+
+                      <div class="option">
+                        <span class="radio"></span>
+                        <div class="opt-main">
+                          <div class="opt-title">Voice Consultation</div>
+                          <div class="opt-dur">30 min</div>
+                          <div class="opt-time">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></svg>
+                            <span>Mon, Thu · 9 AM – 5 PM</span>
+                          </div>
+                        </div>
+                        <div class="opt-price">₦10,000</div>
+                      </div>
+                    </div>
+
+                    <div class="cta">
+                      Continue to booking
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </div>
+                  </div>
+
+                  <!-- Tab bar -->
+                  <div class="tabbar">
+                    <div class="tab">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7.5 9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg>
+                      <span>Home</span>
+                    </div>
+                    <div class="tab active">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/></svg>
+                      <span>Find Care</span>
+                    </div>
+                    <div class="tab">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20.5s-8.5-5.2-8.5-11A4.7 4.7 0 0 1 12 6.8a4.7 4.7 0 0 1 8.5 2.7c0 5.8-8.5 11-8.5 11z"/></svg>
+                      <span>My Care</span>
+                    </div>
+                    <div class="tab">
+                      <span class="icon-wrap">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg>
+                        <b class="badge">5</b>
+                      </span>
+                      <span>Messages</span>
+                    </div>
+                    <div class="tab">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1-4 4-5.8 7.5-5.8s6.5 1.8 7.5 5.8"/></svg>
+                      <span>Profile</span>
+                    </div>
+                    <div class="home-indicator"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -52,7 +168,7 @@ import Footer from '../components/Footer.astro';
     <!-- PREMIUM SPLIT CARDS -->
     <section class="split-section">
       <div class="container split-grid">
-        
+
         <!-- Patient Card -->
         <a href="/patients" class="split-card patient-theme reveal">
           <div class="card-icon">👤</div>
@@ -87,11 +203,11 @@ import Footer from '../components/Footer.astro';
   .hero {
     min-height: 90vh;
     background: var(--purple-deep);
-    position: relative; 
+    position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 140px 0 0 0; 
+    padding: 140px 0 0 0;
   }
 
   /* Glow Orbs & Grid */
@@ -118,9 +234,9 @@ import Footer from '../components/Footer.astro';
   /* ── HERO TEXT CONTENT ── */
   .hero-content {
     position: relative;
-    z-index: 10; 
+    z-index: 10;
     max-width: 800px;
-    padding-bottom: 40px; 
+    padding-bottom: 40px;
   }
 
   .hero-eyebrow {
@@ -134,7 +250,7 @@ import Footer from '../components/Footer.astro';
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.2rem); 
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
     color: var(--white);
     margin-bottom: 24px;
     line-height: 1.1;
@@ -144,34 +260,199 @@ import Footer from '../components/Footer.astro';
   .hero-body {
     font-size: clamp(1rem, 1.5vw, 1.15rem);
     color: rgba(255,255,255,0.7);
-    max-width: 600px; 
-    margin: 0 auto; 
-    line-height: 1.7; 
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
     font-weight: 300;
   }
 
-  /* ── HERO IMAGE (Mobile View) ── */
+  /* ── HERO IMAGE WRAPPER (Mobile View) ── */
   .hero-image-wrapper {
     position: relative;
-    z-index: 1; 
+    z-index: 1;
     width: 100%;
-    max-width: 300px;
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
-  
-  .hero-image {
-    width: 100%;
-    height: auto;
-    mask-image: linear-gradient(to top, transparent 0%, black 15%);
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
-    position: relative;
-    z-index: 2;
-  }
 
   /* Hide backglow on mobile */
   .image-backglow { display: none; }
+
+  /* ═══════════════════════════════════════════
+     PHONE MOCKUP
+     Everything is sized in em, so changing
+     .phone's font-size scales the whole phone.
+     ═══════════════════════════════════════════ */
+  .phone {
+    --ink: #1a0b2e;
+    --violet: #4a2a9a;
+    --muted: #5b6190;
+    position: relative;
+    z-index: 2;
+    font-size: 8.6px;               /* mobile size: 30em ≈ 258px wide */
+    width: 30em;
+    height: 53em;
+    flex-shrink: 0;
+    font-family: var(--font-body, system-ui, -apple-system, 'Segoe UI', sans-serif);
+    /* fade the bottom into the hero, like the old image did */
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 14%);
+    mask-image: linear-gradient(to top, transparent 0%, black 14%);
+  }
+
+  .phone, .phone * { box-sizing: border-box; }
+
+  /* Hardware buttons */
+  .side-btn { position: absolute; width: 0.28em; background: #8a8f9e; border-radius: 0.2em; }
+  .sb-1 { left: -0.2em; top: 9.6em;  height: 2.2em; }
+  .sb-2 { left: -0.2em; top: 13.2em; height: 4em; }
+  .sb-3 { left: -0.2em; top: 18.2em; height: 4em; }
+  .sb-4 { right: -0.2em; top: 14.5em; height: 6.4em; }
+
+  .phone-frame {
+    position: absolute; inset: 0;
+    border-radius: 5em;
+    padding: 0.28em;
+    background: linear-gradient(145deg, #e3e6ee 0%, #6e7384 35%, #cfd3dd 60%, #5d6272 100%);
+    box-shadow: 0 2em 4em rgba(10, 4, 30, 0.55), 0 0 0 0.1em rgba(255,255,255,0.08);
+  }
+  .phone-bezel {
+    width: 100%; height: 100%;
+    border-radius: 4.75em;
+    background: #07070b;
+    padding: 1.3em;
+  }
+  .screen {
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 3.6em;
+    overflow: hidden;
+    background: #f7f5fc;
+    display: flex; flex-direction: column;
+    color: var(--ink);
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  /* Header */
+  .app-header {
+    position: relative;
+    flex: 0 0 auto;
+    height: 7.8em;
+    background: linear-gradient(160deg, #4a2a9a 0%, #3c2185 100%);
+    color: #fff;
+    padding: 0 1.4em;
+  }
+  .island {
+    position: absolute; top: 0.9em; left: 50%; transform: translateX(-50%);
+    width: 8.2em; height: 2.3em; border-radius: 2em; background: #05050a;
+  }
+  .status {
+    position: relative;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 3.1em; padding-top: 0.3em;
+    font-weight: 600; font-size: 1em;
+  }
+  .time { margin-left: 0.8em; }
+  .status-icons { display: flex; align-items: center; gap: 0.35em; margin-right: 0.3em; }
+  .status-icons svg { width: auto; height: 0.85em; }
+  .status-icons svg:last-child { height: 0.85em; }
+
+  .header-row { display: flex; align-items: center; gap: 1em; margin-top: 0.3em; }
+  .back {
+    flex: 0 0 2.9em; height: 2.9em; border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .header-eyebrow {
+    font-size: 0.72em; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; opacity: 0.92;
+  }
+  .header-name {
+    font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+    font-size: 2.05em; font-weight: 700; line-height: 1.1;
+  }
+
+  /* Body */
+  .app-body {
+    flex: 1 1 auto;
+    padding: 0.6em 0.65em 0;
+    display: flex; flex-direction: column; gap: 0.55em;
+    min-height: 0;
+  }
+  .card {
+    flex: 0 0 auto;
+    background: #fff;
+    border-radius: 1.1em;
+    box-shadow: 0 0.1em 0.5em rgba(40, 20, 90, 0.06);
+  }
+  .label {
+    font-size: 0.78em; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #3c4468; margin-bottom: 0.5em;
+  }
+
+  .profile-card { display: flex; align-items: center; gap: 1.1em; padding: 0.6em 0.9em; }
+  .avatar { width: 5.5em; height: 5.5em; border-radius: 50%; object-fit: cover; flex: 0 0 auto; }
+  .p-name { font-weight: 700; font-size: 1.15em; }
+  .pill {
+    display: inline-block; margin: 0.5em 0 0.45em;
+    padding: 0.35em 1em; border-radius: 2em;
+    background: #e9e2fb; color: #4a2a9a;
+    font-size: 0.78em; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .p-exp { font-size: 0.95em; color: #5a5f86; }
+
+  .about-card { padding: 0.8em 1em 0.7em; }
+  .about-card p { margin: 0; font-size: 0.97em; line-height: 1.45; color: #1c1236; }
+
+  .options-card { padding: 0.8em 0.9em 0.7em; }
+  .option {
+    position: relative;
+    display: flex; align-items: flex-start; gap: 0.9em;
+    border: 1px solid #dcd8ee; border-radius: 0.9em;
+    padding: 0.65em 0.9em 0.65em 0.8em;
+    margin-top: 0.5em;
+  }
+  .radio { flex: 0 0 1.55em; height: 1.55em; border-radius: 50%; border: 1.5px solid #cfcbe3; margin-top: 0.3em; background: #fff; }
+  .opt-main { flex: 1; }
+  .opt-title { font-weight: 700; font-size: 1.05em; color: #1a0b2e; }
+  .opt-dur { font-size: 0.95em; color: #3a3560; margin-top: 0.05em; }
+  .opt-time { display: flex; gap: 0.6em; align-items: flex-start; margin-top: 0.55em; color: #5b61a8; font-size: 0.88em; line-height: 1.5; }
+  .opt-time svg { flex: 0 0 auto; width: 1.25em; height: 1.25em; margin-top: 0.1em; }
+  .opt-price { font-weight: 800; font-size: 1.05em; color: #1a0b2e; white-space: nowrap; }
+
+  .cta {
+    flex: 0 0 auto;
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center; gap: 0.6em;
+    height: 2.55em; border-radius: 1.4em;
+    background: #4a2a9a; color: #fff; font-weight: 500; font-size: 1.02em;
+  }
+
+  /* Tab bar */
+  .tabbar {
+    position: relative;
+    flex: 0 0 auto;
+    height: 4em;
+    margin-top: 0.55em;
+    display: flex; justify-content: space-around; align-items: flex-start;
+    padding: 0.8em 0.3em 0;
+    background: #fff;
+    border-top: 1px solid #ece9f6;
+  }
+  .tab { display: flex; flex-direction: column; align-items: center; gap: 0.15em; font-size: 0.72em; color: #2b2750; min-width: 4em; }
+  .tab svg { width: 1.9em; height: 1.9em; }
+  .tab.active { color: #6d28d9; font-weight: 600; }
+  .icon-wrap { position: relative; display: inline-flex; }
+  .badge {
+    position: absolute; top: -0.5em; right: -0.7em;
+    min-width: 1.6em; height: 1.6em; border-radius: 1em;
+    background: #ef3b3b; color: #fff; font-size: 0.8em; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .home-indicator {
+    position: absolute; bottom: 0.5em; left: 50%; transform: translateX(-50%);
+    width: 9em; height: 0.35em; border-radius: 1em; background: #0b0b12;
+  }
 
   /* Scroll Hint */
   .hero-scroll-hint {
@@ -186,7 +467,7 @@ import Footer from '../components/Footer.astro';
   /* ── DESKTOP LAYOUT ── */
   @media (min-width: 1024px) {
     .hero {
-      padding: 160px 0 0 0; 
+      padding: 160px 0 0 0;
     }
 
     .hero-layout {
@@ -200,49 +481,36 @@ import Footer from '../components/Footer.astro';
       max-width: 55%;
       padding-bottom: 80px;
     }
-    
+
     .hero-body { margin: 0; }
 
     /* Image Wrapper */
     .hero-image-wrapper {
       position: absolute;
-      right: 0; 
-      bottom: 0; 
-      width: 500px; 
+      right: 0;
+      bottom: 0;
+      width: 500px;
       max-width: 50vw;
       margin-top: 0;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
     }
 
-    /* THE NEW GLOW EFFECT */
+    /* Phone scales with viewport height so it never overflows the hero */
+    .phone { font-size: min(11.5px, 1.45vh); }
+
+    /* Glow behind the phone */
     .image-backglow {
       display: block;
       position: absolute;
       top: 10%;
-      left: -30%; /* Pushes the glow out to the left */
-      width: 100%;
+      left: -10%;
+      width: 120%;
       height: 80%;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, transparent 65%);
-      filter: blur(50px); /* Softens the glow heavily */
-      z-index: 1; /* Behind the image */
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 65%);
+      filter: blur(50px);
+      z-index: 1;
       pointer-events: none;
-    }
-    
-    .hero-image {
-      width: 100%;
-      height: auto;
-      max-height: 80vh; 
-      object-fit: contain;
-      object-position: bottom right;
-      
-      /* WIDER MASK GRADIENT for a smoother fade */
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 15%, black 40%, black 100%), 
-                  linear-gradient(to top, transparent 0%, black 15%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 15%, black 40%, black 100%), 
-                          linear-gradient(to top, transparent 0%, black 15%);
-      -webkit-mask-composite: source-in; 
-      mask-composite: intersect;
     }
   }
 
