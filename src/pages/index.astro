@@ -89,8 +89,8 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     display: flex;
     align-items: center;
-    /* Increased top padding slightly to give the image breathing room */
-    padding: 140px 0 80px; 
+    /* Added padding top to ensure space for the fixed header */
+    padding: 140px 0 0 0; 
   }
 
   /* Glow Orbs & Grid */
@@ -119,6 +119,7 @@ import Footer from '../components/Footer.astro';
     position: relative;
     z-index: 10; /* Keeps text above the image */
     max-width: 800px;
+    padding-bottom: 40px; /* Space between text and bottom on mobile */
   }
 
   .hero-eyebrow {
@@ -131,9 +132,8 @@ import Footer from '../components/Footer.astro';
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-accent); animation: blink 2s ease-in-out infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-  /* REDUCED FONT SIZE HERE */
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.2rem); 
+    font-size: clamp(2.5rem, 5vw, 4.2rem); /* Slightly smaller title */
     color: var(--white);
     margin-bottom: 24px;
     line-height: 1.1;
@@ -152,10 +152,12 @@ import Footer from '../components/Footer.astro';
   /* ── HERO IMAGE (Mobile View - Below text) ── */
   .hero-image-wrapper {
     position: relative;
-    z-index: 1; /* Behind text */
+    z-index: 1; 
     width: 100%;
     max-width: 300px;
-    margin-top: 48px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
   }
   
   .hero-image {
@@ -177,6 +179,10 @@ import Footer from '../components/Footer.astro';
 
   /* ── DESKTOP LAYOUT (Image on the right, behind text) ── */
   @media (min-width: 1024px) {
+    .hero {
+      padding: 160px 0 0 0; /* Extra top padding on desktop */
+    }
+
     .hero-layout {
       flex-direction: row;
       justify-content: flex-start;
@@ -185,44 +191,45 @@ import Footer from '../components/Footer.astro';
     }
 
     .hero-content {
-      max-width: 55%; /* Give text more room */
+      max-width: 55%;
+      padding-bottom: 80px;
     }
     
     .hero-body {
       margin: 0; 
     }
 
-    /* CONSTRAINED BY HEIGHT, NOT WIDTH */
+    /* Sizing by width, capping height */
     .hero-image-wrapper {
       position: absolute;
-      right: 0; 
-      bottom: 0; /* Anchored to the bottom */
-      height: 85%; /* Takes up 85% of the hero height max */
-      width: auto;
+      right: -5%; 
+      bottom: 0; /* Anchored to bottom */
+      width: 500px; /* Large, but slightly smaller than 550px */
+      max-width: 50vw;
       margin-top: 0;
       display: flex;
-      align-items: flex-end;
+      justify-content: flex-end;
     }
     
     .hero-image {
-      height: 100%;
-      width: auto;
-      max-width: 50vw; /* Prevent it from pushing too far left */
+      width: 100%;
+      height: auto;
+      max-height: 80vh; /* Caps the height so it never hits the header */
       object-fit: contain;
       object-position: bottom right;
       
-      /* Fades the left and bottom edges so it blends seamlessly behind the text */
+      /* Fades edges seamlessly */
       mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
-                  linear-gradient(to top, transparent 0%, black 20%);
+                  linear-gradient(to top, transparent 0%, black 15%);
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
-                          linear-gradient(to top, transparent 0%, black 20%);
+                          linear-gradient(to top, transparent 0%, black 15%);
       -webkit-mask-composite: source-in; 
       mask-composite: intersect;
     }
   }
 
   /* ── SPLIT CARDS SECTION ── */
-  .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; margin-top: -40px; }
+  .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; }
   .split-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
 
   .split-card {
