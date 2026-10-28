@@ -1,111 +1,35 @@
 ---
+// src/layouts/Layout.astro
 import '../styles/global.css';
 
-const {
-  title,
-  description,
-  page = '',
-  ctaLabel = 'Get the app',
-  sticky = true,
-  redirect = false,
-  noindex = false,
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { 
+  title = "YerosCare - Telemedicine App", 
+  description = "Connect with doctors online. Consultations that fit your day." 
 } = Astro.props;
-
-// These come from astro.config.mjs (edit them there)
-const PLAY_URL = __PLAY_URL__;
-const APPSTORE_URL = __APPSTORE_URL__;
-const SUPPORT_EMAIL = __SUPPORT_EMAIL__;
-const LEGAL_URL = __LEGAL_URL__;
-
-// Pages are built as doctors.html etc., but are served as /doctors, so tidy the URL
-const cleanPath = Astro.url.pathname.replace(/index\.html$/, '').replace(/\.html$/, '') || '/';
-const canonical = new URL(cleanPath, Astro.site).href;
-const year = new Date().getFullYear();
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#2a0f66" />
-    <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex" />}
-    <meta property="og:site_name" content="YerosCare" />
-    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    
+    <!-- Open Graph Tags for Social Sharing -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <meta property="og:type" content="website" />
+
+    <title>{title}</title>
   </head>
-  <body data-redirect={redirect ? 'true' : undefined}>
-    <header class="site-header">
-      <div class="wrap">
-        <a class="logo" href="/">YerosCare</a>
-        <nav class="nav" aria-label="Main">
-          <a href="/" aria-current={page === 'patients' ? 'page' : undefined}>For patients</a>
-          <a href="/doctors" aria-current={page === 'doctors' ? 'page' : undefined}>For doctors</a>
-        </nav>
-        <a class="btn btn-primary header-cta" href="/get" data-get>{ctaLabel}</a>
-      </div>
-    </header>
-
-    <main>
-      <slot />
-    </main>
-
-    <footer class="site-footer on-dark">
-      <div class="wrap footer-grid">
-        <div>
-          <p class="footer-brand">YerosCare</p>
-          <p class="small">
-            Online doctor consultations, where suitable. YerosCare is not for emergencies. If it is
-            urgent, go to the nearest hospital.
-          </p>
-        </div>
-        <nav class="footer-nav" aria-label="Footer">
-          <a href="/">For patients</a>
-          <a href="/doctors">For doctors</a>
-          <a href={LEGAL_URL}>Terms and legal</a>
-          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
-        </nav>
-      </div>
-      <div class="wrap small">© {year} YerosCare</div>
-    </footer>
-
-    {
-      sticky && (
-        <div class="sticky-cta">
-          <a class="btn btn-primary" href="/get" data-get>
-            {ctaLabel}
-          </a>
-        </div>
-      )
-    }
-
-    <script>
-      // Send phone visitors straight to the right store. Desktop visitors go to /get.
-      const ua = navigator.userAgent || '';
-      const ios =
-        /iPad|iPhone|iPod/.test(ua) ||
-        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      const android = /Android/i.test(ua);
-      const target = ios ? __APPSTORE_URL__ : android ? __PLAY_URL__ : null;
-
-      if (target) {
-        document.querySelectorAll('[data-get]').forEach((a) => a.setAttribute('href', target));
-        if (document.body.dataset.redirect === 'true') {
-          window.location.replace(target);
-        }
-      }
-    </script>
+  <body>
+    <!-- The <slot /> is where the specific page content (like patients.astro) will be injected -->
+    <slot />
   </body>
 </html>
