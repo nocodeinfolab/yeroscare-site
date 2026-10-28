@@ -1,6 +1,11 @@
-
+---
 // src/components/Header.astro
-interface Props { audience?: "patients" | "doctors" | "home"; }
+
+// FIXED: Formatted the interface across multiple lines
+interface Props {
+  audience?: "patients" | "doctors" | "home";
+}
+
 const { audience = "home" } = Astro.props;
 const ctaText = audience === "doctors" ? "Apply to Join" : "Download App";
 const ctaLink = audience === "doctors" ? "#apply" : "#download"; 
@@ -10,7 +15,6 @@ const ctaLink = audience === "doctors" ? "#apply" : "#download";
   <div class="container header-container">
     
     <a href="/" class="logo">
-      <!-- Using a stylized text logo for premium feel -->
       <span class="logo-icon">✦</span> YerosCare
     </a>
 
@@ -41,7 +45,7 @@ const ctaLink = audience === "doctors" ? "#apply" : "#download";
 
 <style>
   .site-header {
-    position: fixed; /* Fixed for better sticky feel */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
@@ -75,7 +79,7 @@ const ctaLink = audience === "doctors" ? "#apply" : "#download";
 
   .desktop-only { display: none; }
 
-  .mobile-menu-btn { background: none; border: none; color: var(--color-text-main); padding: 0.5rem; }
+  .mobile-menu-btn { background: none; border: none; color: var(--color-text-main); padding: 0.5rem; cursor: pointer; }
   
   .mobile-menu {
     display: none; position: absolute; top: 72px; left: 0; width: 100%;
