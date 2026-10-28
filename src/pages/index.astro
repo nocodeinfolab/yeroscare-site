@@ -5,56 +5,57 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout 
-  title="YerosCare - Speak with a Doctor Online" 
-  description="Connect with trusted doctors online. Consultations that fit your day, wherever you are."
->
-  <!-- We pass audience="home" so neither toggle is highlighted in the header -->
+<Layout title="YerosCare - Speak with a Doctor Online" description="Connect with trusted doctors online.">
   <Header audience="home" />
 
-  <main>
-    <!-- Hero Section -->
+  <main class="home-main">
+    <!-- Premium Hero -->
     <section class="hero">
+      <div class="hero-bg-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+      </div>
+      
       <div class="container hero-content">
-        <h1 class="hero-title">Healthcare that fits your life.</h1>
+        <div class="premium-badge">✨ The future of healthcare is here</div>
+        <h1 class="hero-title">Healthcare that fits <span class="text-gradient">your life.</span></h1>
         <p class="hero-subtitle">
-          YerosCare connects patients with trusted doctors for online consultations, 
-          and helps doctors turn enquiries into paid consultations. 
+          Skip the waiting room. Connect with trusted doctors in Nigeria for video, voice, chat, or home consultations.
         </p>
       </div>
     </section>
 
-    <!-- The Split / Fork in the Road -->
+    <!-- Premium Split Cards -->
     <section class="split-section">
       <div class="container split-grid">
         
         <!-- Patient Card -->
-        <a href="/patients" class="split-card patient-card">
-          <div class="card-image-wrapper">
-            <!-- Replace with actual patient image in public/images -->
-            <div class="placeholder-image patient-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
+        <a href="/patients" class="split-card glass-card patient-theme">
+          <div class="card-visual">
+            <div class="icon-circle">👤</div>
           </div>
           <div class="card-content">
             <h2>I am a Patient</h2>
             <p>Speak with a doctor online. Explore consultations that fit your schedule, wherever you are.</p>
-            <span class="card-cta">Find a Doctor &rarr;</span>
+            <div class="card-action">
+              <span>Find a Doctor</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
           </div>
         </a>
 
         <!-- Doctor Card -->
-        <a href="/doctors" class="split-card doctor-card">
-          <div class="card-image-wrapper">
-            <!-- Replace with actual doctor image in public/images -->
-            <div class="placeholder-image doctor-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-            </div>
+        <a href="/doctors" class="split-card glass-card doctor-theme">
+          <div class="card-visual">
+            <div class="icon-circle">🩺</div>
           </div>
           <div class="card-content">
             <h2>I am a Doctor</h2>
-            <p>Turn suitable enquiries into consultations. Join YerosCare and connect with patients seeking your expertise.</p>
-            <span class="card-cta">Apply to Join &rarr;</span>
+            <p>Turn suitable enquiries into paid consultations. Join YerosCare and grow your practice.</p>
+            <div class="card-action">
+              <span>Apply to Join</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
           </div>
         </a>
 
@@ -66,142 +67,75 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  /* Hero Section Styles */
+  .home-main { position: relative; overflow: hidden; }
+
+  /* Premium Hero */
   .hero {
-    padding: 4rem 0 3rem 0;
+    position: relative;
+    padding: 6rem 0 4rem 0;
     text-align: center;
-    background-color: var(--color-bg-light);
+    background: var(--color-bg-base);
   }
 
-  .hero-content {
-    max-width: 800px;
+  /* Background Glow Orbs */
+  .hero-bg-effects { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; pointer-events: none; }
+  .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; }
+  .orb-1 { width: 400px; height: 400px; background: #DDD6FE; top: -100px; left: -100px; }
+  .orb-2 { width: 300px; height: 300px; background: #E9D5FF; bottom: 0; right: -50px; }
+
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  
+  .premium-badge {
+    display: inline-block; background: white; border: 1px solid #E5E7EB;
+    padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; font-size: 0.875rem;
+    color: var(--color-primary-dark); box-shadow: var(--shadow-sm); margin-bottom: 1.5rem;
   }
 
   .hero-title {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    color: var(--color-primary-dark);
-    margin-bottom: 1rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: 3rem; font-weight: 800; color: var(--color-text-main); margin-bottom: 1.5rem;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  .hero-subtitle {
-    font-size: 1.125rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-  }
+  .hero-subtitle { font-size: 1.25rem; color: var(--color-text-muted); max-width: 600px; margin: 0 auto; }
 
-  /* Split Section Styles */
-  .split-section {
-    padding: 3rem 0 6rem 0;
-  }
+  /* Split Section */
+  .split-section { padding: 2rem 0 6rem 0; position: relative; z-index: 1; }
+  .split-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; }
 
-  .split-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Stack on mobile */
-    gap: 2rem;
-  }
-
-  /* Card Styles */
+  /* Premium Cards */
   .split-card {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-bg-white);
-    border-radius: 1.5rem;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    border: 2px solid #E5E7EB;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    display: flex; flex-direction: column; border-radius: 2rem; overflow: hidden;
+    text-decoration: none; color: inherit; transition: all 0.4s ease; padding: 2.5rem;
+    position: relative;
   }
 
-  .split-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-primary-light);
-    box-shadow: 0 10px 25px -5px rgba(74, 27, 122, 0.15);
+  .split-card:hover { transform: translateY(-8px); }
+
+  .patient-theme:hover { box-shadow: 0 20px 40px -10px rgba(91, 33, 182, 0.2); border-color: #C4B5FD; }
+  .doctor-theme:hover { box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.2); border-color: #BAE6FD; }
+
+  .card-visual { margin-bottom: 2rem; }
+  .icon-circle {
+    width: 64px; height: 64px; border-radius: 1rem; display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; background: white; box-shadow: var(--shadow-md);
   }
 
-  .card-image-wrapper {
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #F3F4F6;
-  }
+  .card-content h2 { font-size: 1.75rem; margin-bottom: 0.75rem; color: var(--color-text-main); }
+  .card-content p { color: var(--color-text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
 
-  .patient-placeholder {
-    background-color: #EDE9FE; /* Light purple */
-    color: var(--color-primary);
+  .card-action {
+    display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-family: var(--font-heading);
+    color: var(--color-primary); font-size: 1.1rem; transition: gap 0.3s ease;
   }
+  .doctor-theme .card-action { color: #0284C7; }
+  .split-card:hover .card-action { gap: 1rem; }
 
-  .doctor-placeholder {
-    background-color: #E0F2FE; /* Light blue/teal for contrast */
-    color: #0284C7;
-  }
-
-  .placeholder-image {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card-content {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .card-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--color-text-main);
-  }
-
-  .card-content p {
-    color: var(--color-text-muted);
-    margin-bottom: 1.5rem;
-    flex-grow: 1; /* Pushes the CTA to the bottom */
-  }
-
-  .card-cta {
-    font-weight: 700;
-    color: var(--color-primary);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.1rem;
-  }
-
-  .doctor-card .card-cta {
-    color: #0284C7; /* Match the doctor theme */
-  }
-
-  /* Desktop Layout */
   @media (min-width: 768px) {
-    .hero {
-      padding: 6rem 0 5rem 0;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-    }
-
-    .split-grid {
-      grid-template-columns: 1fr 1fr; /* Side by side on desktop */
-      gap: 3rem;
-    }
-
-    .card-image-wrapper {
-      height: 250px; /* Taller images on desktop */
-    }
+    .hero-title { font-size: 4rem; }
+    .split-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
   }
 </style>
