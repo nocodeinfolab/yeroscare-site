@@ -8,53 +8,57 @@ import Footer from '../components/Footer.astro';
 <Layout title="YerosCare - Speak with a Doctor Online" description="Connect with trusted doctors online.">
   <Header audience="home" />
 
-  <main class="home-main">
-    <!-- Premium Hero with Background Image -->
+  <main>
+    <!-- PREMIUM HERO -->
     <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+
       <div class="container hero-content">
-        <div class="premium-badge">✨ The future of healthcare is here</div>
+        <div class="hero-eyebrow reveal">
+          <span class="dot"></span> Now available in Nigeria
+        </div>
         
-        <h1 class="hero-title">
-          Healthcare that fits <br class="desktop-break" /> <span class="text-gradient">your life.</span>
+        <h1 class="hero-title reveal reveal-delay-1">
+          Healthcare that fits<br><em>your life.</em>
         </h1>
         
-        <p class="hero-subtitle">
-          YerosCare connects patients with trusted doctors for online consultations, and helps doctors turn enquiries into paid consultations.
+        <p class="hero-body reveal reveal-delay-2">
+          YerosCare connects patients with trusted doctors for online consultations, 
+          and helps doctors turn enquiries into paid consultations.
         </p>
+      </div>
+
+      <div class="hero-scroll-hint reveal reveal-delay-3">
+        <div class="scroll-line"></div>
+        Scroll
       </div>
     </section>
 
-    <!-- Premium Split Cards -->
+    <!-- PREMIUM SPLIT CARDS -->
     <section class="split-section">
       <div class="container split-grid">
         
         <!-- Patient Card -->
-        <a href="/patients" class="split-card glass-card patient-theme">
-          <div class="card-visual">
-            <div class="icon-circle">👤</div>
-          </div>
-          <div class="card-content">
-            <h2>I am a Patient</h2>
-            <p>Speak with a doctor online. Explore consultations that fit your schedule, wherever you are.</p>
-            <div class="card-action">
-              <span>Find a Doctor</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
+        <a href="/patients" class="split-card patient-theme reveal">
+          <div class="card-icon">👤</div>
+          <h2>I am a Patient</h2>
+          <p>Speak with a doctor online. Explore consultations that fit your schedule, wherever you are.</p>
+          <div class="card-action">
+            <span>Find a Doctor</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
         <!-- Doctor Card -->
-        <a href="/doctors" class="split-card glass-card doctor-theme">
-          <div class="card-visual">
-            <div class="icon-circle">🩺</div>
-          </div>
-          <div class="card-content">
-            <h2>I am a Doctor</h2>
-            <p>Turn suitable enquiries into paid consultations. Join YerosCare and grow your practice.</p>
-            <div class="card-action">
-              <span>Apply to Join</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
+        <a href="/doctors" class="split-card doctor-theme reveal reveal-delay-1">
+          <div class="card-icon">🩺</div>
+          <h2>I am a Doctor</h2>
+          <p>Turn suitable enquiries into paid consultations. Join YerosCare and grow your practice.</p>
+          <div class="card-action">
+            <span>Apply to Join</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
         </a>
 
@@ -66,113 +70,101 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .home-main { position: relative; overflow: hidden; background-color: var(--color-bg-base); }
-
-  /* Premium Hero with Image Background */
+  /* HERO */
   .hero {
-    position: relative;
-    padding: 8rem 0 6rem 0;
-    text-align: center;
-    
-    /* THE BACKGROUND IMAGE */
-    /* Replace this URL with your own image, e.g., url('/images/hero-bg.jpg') */
-    background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Optional: Adds a parallax effect on desktop */
-    background-attachment: fixed; 
+    min-height: 90vh;
+    background: var(--purple-deep);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 5vw 100px;
+    position: relative; overflow: hidden;
   }
 
-  /* The Dark Purple Overlay to make text readable */
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    /* Gradient from deep purple to your primary brand color */
-    background: linear-gradient(135deg, rgba(46, 16, 101, 0.9), rgba(91, 33, 182, 0.7));
-    z-index: 1;
+  /* Glow Orbs & Grid */
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(167, 139, 250, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px; pointer-events: none;
   }
+  .hero-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+  .hero-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(167,139,250,0.15) 0%, transparent 70%); top: -100px; right: -150px; }
+  .hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%); bottom: -80px; left: -80px; }
 
-  .hero-content { 
-    position: relative; 
-    z-index: 2; /* Keeps text above the overlay */
-    max-width: 850px; 
+  .hero-content { position: relative; z-index: 1; max-width: 850px; }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--purple-accent); margin-bottom: 28px; padding: 7px 16px;
+    border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 100px; background: rgba(167, 139, 250, 0.05);
   }
-  
-  .premium-badge {
-    display: inline-block; 
-    background: rgba(255, 255, 255, 0.15); 
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.5rem 1.25rem; 
-    border-radius: 9999px; 
-    font-weight: 600; 
-    font-size: 0.875rem;
-    color: white; 
-    backdrop-filter: blur(10px);
-    margin-bottom: 1.5rem;
-  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-accent); animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
   .hero-title {
-    font-size: 3rem; 
-    font-weight: 800; 
-    color: white; 
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--white);
+    margin-bottom: 24px;
   }
-  
-  /* Light gradient for the highlighted text */
-  .text-gradient {
-    background: linear-gradient(135deg, #E9D5FF, #C4B5FD);
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent;
+  .hero-title em { font-style: italic; color: var(--purple-accent); }
+
+  .hero-body {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.6);
+    max-width: 600px; margin: 0 auto; line-height: 1.7; font-weight: 300;
   }
 
-  .hero-subtitle { 
-    font-size: 1.25rem; 
-    color: #E9D5FF; /* Light purple text */
-    max-width: 700px; 
-    margin: 0 auto; 
-    line-height: 1.6;
+  .hero-scroll-hint {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.3); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
   }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
 
-  /* Split Section */
-  .split-section { padding: 4rem 0 6rem 0; position: relative; z-index: 1; }
-  .split-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; }
+  /* SPLIT CARDS SECTION */
+  .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; margin-top: -40px; }
+  .split-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 900px; }
 
-  /* Premium Cards (Glassmorphism) */
   .split-card {
-    display: flex; flex-direction: column; border-radius: 2rem; overflow: hidden;
-    text-decoration: none; color: inherit; transition: all 0.4s ease; padding: 2.5rem;
-    position: relative;
+    display: flex; flex-direction: column; padding: 48px 40px; border-radius: 24px;
+    background: var(--white); border: 1px solid rgba(26, 11, 46, 0.08);
+    text-decoration: none; color: inherit; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
   }
 
-  .split-card:hover { transform: translateY(-8px); }
+  .split-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26, 11, 46, 0.08); border-color: var(--purple-light); }
 
-  .patient-theme:hover { box-shadow: 0 20px 40px -10px rgba(91, 33, 182, 0.2); border-color: #C4B5FD; }
-  .doctor-theme:hover { box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.2); border-color: #BAE6FD; }
-
-  .card-visual { margin-bottom: 2rem; }
-  .icon-circle {
-    width: 64px; height: 64px; border-radius: 1rem; display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; background: white; box-shadow: var(--shadow-md);
+  .card-icon {
+    width: 64px; height: 64px; border-radius: 16px; background: var(--purple-light);
+    display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 24px;
   }
+  .doctor-theme .card-icon { background: #e0f2fe; } /* Soft blue for doctors */
 
-  .card-content h2 { font-size: 1.75rem; margin-bottom: 0.75rem; color: var(--color-text-main); }
-  .card-content p { color: var(--color-text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
+  .split-card h2 { font-size: 1.8rem; margin-bottom: 12px; color: var(--purple-deep); }
+  .split-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 32px; font-weight: 400; }
 
   .card-action {
-    display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-family: var(--font-heading);
-    color: var(--color-primary); font-size: 1.1rem; transition: gap 0.3s ease;
+    display: flex; align-items: center; gap: 8px; font-weight: 600; font-family: var(--font-body);
+    color: var(--purple-soft); font-size: 1rem; margin-top: auto; transition: gap 0.3s ease;
   }
-  .doctor-theme .card-action { color: #0284C7; }
-  .split-card:hover .card-action { gap: 1rem; }
+  .doctor-theme .card-action { color: #0284c7; }
+  .split-card:hover .card-action { gap: 16px; }
 
-  /* Responsive */
   @media (min-width: 768px) {
-    .hero { padding: 10rem 0 8rem 0; }
-    .hero-title { font-size: 4.5rem; }
-    .split-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .desktop-break { display: block; }
+    .split-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
 </style>
+
+<script>
+  // SCROLL REVEAL ANIMATION
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
