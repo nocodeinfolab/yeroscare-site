@@ -9,25 +9,36 @@ import Footer from '../components/Footer.astro';
   <Header audience="home" />
 
   <main>
-    <!-- PREMIUM HERO -->
+    
     <section class="hero">
+      <!-- Background Effects -->
       <div class="hero-grid"></div>
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
 
-      <div class="container hero-content">
-        <div class="hero-eyebrow reveal">
-          <span class="dot"></span> Now available in Nigeria
+      <div class="container hero-layout">
+        
+        <!-- Text Content (Left Side) -->
+        <div class="hero-content">
+          <div class="hero-eyebrow reveal">
+            <span class="dot"></span> Now available in Nigeria
+          </div>
+          
+          <h1 class="hero-title reveal reveal-delay-1">
+            Healthcare that fits<br><em>your life.</em>
+          </h1>
+          
+          <p class="hero-body reveal reveal-delay-2">
+            YerosCare connects patients with trusted doctors for online consultations, 
+            and helps doctors turn enquiries into paid consultations.
+          </p>
         </div>
-        
-        <h1 class="hero-title reveal reveal-delay-1">
-          Healthcare that fits<br><em>your life.</em>
-        </h1>
-        
-        <p class="hero-body reveal reveal-delay-2">
-          YerosCare connects patients with trusted doctors for online consultations, 
-          and helps doctors turn enquiries into paid consultations.
-        </p>
+
+        <!-- Image Content (Right Side, Behind Text) -->
+        <div class="hero-image-wrapper reveal reveal-delay-3">
+          <img src="/images/hero-doctor.png" alt="YerosCare Doctor Profile" class="hero-image" />
+        </div>
+
       </div>
 
       <div class="hero-scroll-hint reveal reveal-delay-3">
@@ -70,32 +81,50 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  /* HERO */
+  /* ── HERO BASE ── */
   .hero {
     min-height: 90vh;
     background: var(--purple-deep);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 120px 5vw 100px;
-    position: relative; overflow: hidden;
+    position: relative; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
   }
 
-  /* Glow Orbs & Grid */
+  /* Glow Orbs & Grid (Keep these for the premium texture) */
   .hero-grid {
     position: absolute; inset: 0;
     background-image: linear-gradient(rgba(167, 139, 250, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px; pointer-events: none;
+    background-size: 60px 60px; pointer-events: none; z-index: 0;
   }
-  .hero-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+  .hero-orb { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
   .hero-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(167,139,250,0.15) 0%, transparent 70%); top: -100px; right: -150px; }
   .hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%); bottom: -80px; left: -80px; }
 
-  .hero-content { position: relative; z-index: 1; max-width: 850px; }
+  /* ── HERO LAYOUT ── */
+  .hero-layout {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── HERO TEXT CONTENT ── */
+  .hero-content {
+    position: relative;
+    z-index: 10; /* Keeps text above the image */
+    max-width: 800px;
+  }
 
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
     font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--purple-accent); margin-bottom: 28px; padding: 7px 16px;
     border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 100px; background: rgba(167, 139, 250, 0.05);
+    backdrop-filter: blur(4px);
   }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-accent); animation: blink 2s ease-in-out infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -104,26 +133,87 @@ import Footer from '../components/Footer.astro';
     font-size: clamp(3rem, 7vw, 5.5rem);
     color: var(--white);
     margin-bottom: 24px;
+    line-height: 1.1;
   }
   .hero-title em { font-style: italic; color: var(--purple-accent); }
 
   .hero-body {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: rgba(255,255,255,0.6);
-    max-width: 600px; margin: 0 auto; line-height: 1.7; font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px; 
+    margin: 0 auto; 
+    line-height: 1.7; 
+    font-weight: 300;
   }
 
+  /* ── HERO IMAGE (Mobile View - Below text) ── */
+  .hero-image-wrapper {
+    position: relative;
+    z-index: 1; /* Behind text */
+    width: 100%;
+    max-width: 320px;
+    margin-top: 48px;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: auto;
+    /* Fades the bottom of the image into the background */
+    mask-image: linear-gradient(to top, transparent 0%, black 15%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
+  }
+
+  /* Scroll Hint */
   .hero-scroll-hint {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     color: rgba(255,255,255,0.3); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    z-index: 10;
   }
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollPulse 2s ease-in-out infinite; }
   @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
 
-  /* SPLIT CARDS SECTION */
+  /* ── DESKTOP LAYOUT (Image on the right, behind text) ── */
+  @media (min-width: 1024px) {
+    .hero-layout {
+      flex-direction: row;
+      justify-content: flex-start;
+      text-align: left;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 60%; /* Takes up left side */
+    }
+    
+    .hero-body {
+      margin: 0; /* Align left */
+    }
+
+    .hero-image-wrapper {
+      position: absolute;
+      right: -5%; /* Pulls image slightly off-screen to the right */
+      bottom: -50px;
+      width: 550px; /* Large size on desktop */
+      max-width: 50vw;
+      margin-top: 0;
+    }
+    
+    .hero-image {
+      /* Fades the left and bottom edges so it blends seamlessly behind the text */
+      mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
+                  linear-gradient(to top, transparent 0%, black 20%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
+                          linear-gradient(to top, transparent 0%, black 20%);
+      /* Webkit requires this to combine multiple masks */
+      -webkit-mask-composite: source-in; 
+      mask-composite: intersect;
+    }
+  }
+
+  /* ── SPLIT CARDS SECTION (Remains the same) ── */
   .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; margin-top: -40px; }
-  .split-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 900px; }
+  .split-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
 
   .split-card {
     display: flex; flex-direction: column; padding: 48px 40px; border-radius: 24px;
@@ -138,7 +228,7 @@ import Footer from '../components/Footer.astro';
     width: 64px; height: 64px; border-radius: 16px; background: var(--purple-light);
     display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 24px;
   }
-  .doctor-theme .card-icon { background: #e0f2fe; } /* Soft blue for doctors */
+  .doctor-theme .card-icon { background: #e0f2fe; }
 
   .split-card h2 { font-size: 1.8rem; margin-bottom: 12px; color: var(--purple-deep); }
   .split-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 32px; font-weight: 400; }
