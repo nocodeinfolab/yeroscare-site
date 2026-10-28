@@ -1,0 +1,358 @@
+---
+// src/pages/patients.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AppCTA from '../components/AppCTA.astro';
+---
+
+<Layout 
+  title="YerosCare for Patients - Speak with a Doctor Online" 
+  description="Skip the waiting room. Speak with trusted doctors via video, voice, chat, or home visits. Access your medical records instantly."
+>
+  <Header audience="patients" />
+
+  <main>
+    <!-- STAGE 1: AWARENESS (Why should I care?) -->
+    <section class="stage-section stage-awareness">
+      <div class="container split-layout">
+        <div class="content-left">
+          <span class="stage-badge">Healthcare, simplified</span>
+          <h1>Speak with a doctor online. On your schedule.</h1>
+          <p class="lead-text">
+            No more taking a whole day off work to sit in a waiting room. 
+            Connect with trusted doctors from wherever you are in Nigeria.
+          </p>
+          <p>
+            Not sure which specialist you need? Our <strong>AI-guided triage</strong> asks a few quick questions and instantly matches you with the right doctor for your symptoms.
+          </p>
+          <div class="cta-group">
+            <AppCTA text="Download the App to Book" class="btn-large" />
+          </div>
+        </div>
+        <div class="visual-right">
+          <!-- Placeholder for App Mockup or Patient Image -->
+          <div class="visual-placeholder">
+            <p>App Screen Mockup / Happy Patient Image</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: CONSIDERATION (Is this right for me?) -->
+    <section class="stage-section stage-consideration">
+      <div class="container">
+        <div class="section-header">
+          <h2>Choose how you want to consult</h2>
+          <p>Every patient is different. So are our consultation formats.</p>
+        </div>
+
+        <div class="feature-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <div class="icon-box">📹</div>
+            <h3>Video & Voice Calls</h3>
+            <p>Speak face-to-face or over the phone with your doctor for real-time advice and diagnosis.</p>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <div class="icon-box">💬</div>
+            <h3>Secure Chat</h3>
+            <p>Prefer to type? Have a text-based consultation when you don't need a visual check-up.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <div class="icon-box">🏠</div>
+            <h3>Home Visits</h3>
+            <p>If a doctor offers home services, you will see exactly which areas they cover before you book.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card">
+            <div class="icon-box">💳</div>
+            <h3>Total Transparency</h3>
+            <p>See your doctor's profile, the services they offer, and their consultation fees upfront. No hidden charges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2.5: The "Aha!" Moment (Medical Records) -->
+    <section class="stage-section stage-records">
+      <div class="container split-layout reverse">
+        <div class="visual-left">
+          <div class="visual-placeholder bg-purple-light">
+            <p>App Screen: Medical Records & Prescription Download</p>
+          </div>
+        </div>
+        <div class="content-right">
+          <h2>Your health records, in your pocket.</h2>
+          <p class="lead-text">
+            After your consultation, everything is saved securely in the app.
+          </p>
+          <ul class="benefit-list">
+            <li><strong>Real-time notes:</strong> Access your doctor’s consultation notes immediately after your session.</li>
+            <li><strong>Download prescriptions:</strong> Get a digital copy of your prescription to share with any pharmacy.</li>
+            <li><strong>Always secure:</strong> Your medical history is kept private and easily accessible when you need it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: DECISION (How do I get started?) -->
+    <section class="stage-section stage-decision">
+      <div class="container text-center-container">
+        <h2>Ready to take control of your health?</h2>
+        <p class="lead-text">
+          Download the YerosCare app, log in with your email, and let our AI guide you to the right doctor today.
+        </p>
+        
+        <div class="reassurance-box">
+          <p><strong>Changed your mind?</strong> If you request a cancellation for a paid service that hasn't happened yet, we notify the doctor. If there's no response within 48 hours, your refund is processed automatically.</p>
+        </div>
+
+        <div class="cta-group center-cta">
+          <AppCTA text="Download on App Store" class="btn-large" />
+          <AppCTA text="Get it on Google Play" variant="outline" class="btn-large" />
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Global Page Styles */
+  .stage-section {
+    padding: 5rem 0;
+  }
+
+  .stage-awareness {
+    background-color: var(--color-bg-light);
+    padding-top: 4rem;
+  }
+
+  .stage-consideration {
+    background-color: var(--color-bg-white);
+  }
+
+  .stage-records {
+    background-color: #F3F0F9; /* Very light purple tint */
+  }
+
+  .stage-decision {
+    background-color: var(--color-primary-dark);
+    color: white;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+  }
+
+  .stage-decision h2 {
+    color: white;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+  }
+
+  .lead-text {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .stage-decision .lead-text {
+    color: #E9D5FF;
+  }
+
+  .stage-badge {
+    display: inline-block;
+    background-color: #E9D5FF;
+    color: var(--color-primary-dark);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  /* Layouts */
+  .split-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .content-left, .content-right {
+    flex: 1;
+  }
+
+  .visual-right, .visual-left {
+    flex: 1;
+    width: 100%;
+  }
+
+  .visual-placeholder {
+    width: 100%;
+    height: 350px;
+    background-color: #E5E7EB;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    border: 2px dashed #D1D5DB;
+  }
+
+  .bg-purple-light {
+    background-color: #EDE9FE;
+    border-color: #C4B5FD;
+  }
+
+  /* Feature Grid */
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background-color: var(--color-bg-light);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #E5E7EB;
+  }
+
+  .icon-box {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  /* Benefit List */
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+  }
+
+  .benefit-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+  }
+
+  .benefit-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* Decision Section */
+  .text-center-container {
+    max-width: 700px;
+    text-align: center;
+  }
+
+  .reassurance-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    color: #E9D5FF;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .center-cta {
+    align-items: center;
+  }
+
+  /* Utility Button Size */
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .split-layout {
+      flex-direction: row;
+      gap: 4rem;
+    }
+
+    .split-layout.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .feature-grid {
+      grid-template-columns: 1fr 1fr; /* 2x2 Grid */
+    }
+
+    .cta-group {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    .center-cta {
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .visual-placeholder {
+      height: 450px;
+    }
+  }
+</style>
