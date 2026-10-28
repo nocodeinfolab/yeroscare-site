@@ -1,0 +1,22 @@
+---
+// src/components/AppCTA.astro
+
+interface Props {
+  text?: string;
+  variant?: "primary" | "outline";
+  class?: string;
+}
+
+const { 
+  text = "Download App", 
+  variant = "primary",
+  class: className = "" 
+} = Astro.props;
+
+const baseClass = variant === "primary" ? "btn btn-primary" : "btn btn-outline";
+const finalClass = `${baseClass} ${className}`.trim();
+---
+
+<a href="#" class={finalClass} data-smart-link="true">
+  {text}
+</a>
