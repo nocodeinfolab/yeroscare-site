@@ -1,0 +1,229 @@
+---
+// src/components/Header.astro
+
+interface Props {
+  audience?: "patients" | "doctors" | "home";
+}
+
+const { audience = "home" } = Astro.props;
+
+// Determine CTA text and link based on the active audience
+const ctaText = audience === "doctors" ? "Apply to Join" : "Download App";
+// Note: We will update this link later when we build the AppCTA component
+const ctaLink = audience === "doctors" ? "#apply" : "#download"; 
+---
+
+<header class="site-header">
+  <div class="container header-container">
+    
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- Replace with your actual logo SVG or image later -->
+      <span class="logo-text">YerosCare</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <div class="audience-toggle">
+        <a href="/patients" class:list={["toggle-btn", { active: audience === "patients" }]}>
+          For Patients
+        </a>
+        <a href="/doctors" class:list={["toggle-btn", { active: audience === "doctors" }]}>
+          For Doctors
+        </a>
+      </div>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="header-cta desktop-only">
+      <a href={ctaLink} class="btn btn-primary">{ctaText}</a>
+    </div>
+
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="/patients" class:list={["mobile-link", { active: audience === "patients" }]}>
+        For Patients
+      </a>
+      <a href="/doctors" class:list={["mobile-link", { active: audience === "doctors" }]}>
+        For Doctors
+      </a>
+      <a href={ctaLink} class="btn btn-primary mobile-cta">{ctaText}</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Sticky Header Container */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #E5E7EB;
+    /* Ensure height matches the body padding-top in global.css */
+    height: 70px; 
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  /* Logo */
+  .logo {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.05em;
+  }
+
+  /* Desktop Toggle */
+  .desktop-nav {
+    display: none; /* Hidden on mobile */
+  }
+
+  .audience-toggle {
+    display: flex;
+    background-color: var(--color-bg-light);
+    padding: 4px;
+    border-radius: 9999px;
+    border: 1px solid #E5E7EB;
+  }
+
+  .toggle-btn {
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+  }
+
+  .toggle-btn.active {
+    background-color: var(--color-bg-white);
+    color: var(--color-primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    font-weight: 600;
+  }
+
+  .toggle-btn:hover:not(.active) {
+    color: var(--color-text-main);
+  }
+
+  /* Desktop CTA */
+  .desktop-only {
+    display: none;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-main);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mobile Dropdown */
+  .mobile-menu {
+    display: none; /* Hidden by default, toggled via JS */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-white);
+    border-bottom: 1px solid #E5E7EB;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+  }
+
+  /* Open state for mobile menu */
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .mobile-link {
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #F3F4F6;
+  }
+
+  .mobile-link.active {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .mobile-cta {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  /* Media Query for Desktop */
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: block;
+    }
+    
+    .desktop-only {
+      display: block;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: none !important; /* Force hide on desktop */
+    }
+  }
+</style>
+
+<script>
+  // Simple script to toggle the mobile menu
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      
+      if (isOpen) {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        mobileMenu.classList.add('open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+</script>
