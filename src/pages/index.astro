@@ -9,18 +9,17 @@ import Footer from '../components/Footer.astro';
   <Header audience="home" />
 
   <main class="home-main">
-    <!-- Premium Hero -->
+    <!-- Premium Hero with Background Image -->
     <section class="hero">
-      <div class="hero-bg-effects">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-      </div>
-      
       <div class="container hero-content">
         <div class="premium-badge">✨ The future of healthcare is here</div>
-        <h1 class="hero-title">Healthcare that fits <span class="text-gradient">your life.</span></h1>
+        
+        <h1 class="hero-title">
+          Healthcare that fits <br class="desktop-break" /> <span class="text-gradient">your life.</span>
+        </h1>
+        
         <p class="hero-subtitle">
-          Skip the waiting room. Connect with trusted doctors in Nigeria for video, voice, chat, or home consultations.
+          YerosCare connects patients with trusted doctors for online consultations, and helps doctors turn enquiries into paid consultations.
         </p>
       </div>
     </section>
@@ -67,46 +66,81 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .home-main { position: relative; overflow: hidden; }
+  .home-main { position: relative; overflow: hidden; background-color: var(--color-bg-base); }
 
-  /* Premium Hero */
+  /* Premium Hero with Image Background */
   .hero {
     position: relative;
-    padding: 6rem 0 4rem 0;
+    padding: 8rem 0 6rem 0;
     text-align: center;
-    background: var(--color-bg-base);
+    
+    /* THE BACKGROUND IMAGE */
+    /* Replace this URL with your own image, e.g., url('/images/hero-bg.jpg') */
+    background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Optional: Adds a parallax effect on desktop */
+    background-attachment: fixed; 
   }
 
-  /* Background Glow Orbs */
-  .hero-bg-effects { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; pointer-events: none; }
-  .glow-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; }
-  .orb-1 { width: 400px; height: 400px; background: #DDD6FE; top: -100px; left: -100px; }
-  .orb-2 { width: 300px; height: 300px; background: #E9D5FF; bottom: 0; right: -50px; }
+  /* The Dark Purple Overlay to make text readable */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Gradient from deep purple to your primary brand color */
+    background: linear-gradient(135deg, rgba(46, 16, 101, 0.9), rgba(91, 33, 182, 0.7));
+    z-index: 1;
+  }
 
-  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-content { 
+    position: relative; 
+    z-index: 2; /* Keeps text above the overlay */
+    max-width: 850px; 
+  }
   
   .premium-badge {
-    display: inline-block; background: white; border: 1px solid #E5E7EB;
-    padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; font-size: 0.875rem;
-    color: var(--color-primary-dark); box-shadow: var(--shadow-sm); margin-bottom: 1.5rem;
+    display: inline-block; 
+    background: rgba(255, 255, 255, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1.25rem; 
+    border-radius: 9999px; 
+    font-weight: 600; 
+    font-size: 0.875rem;
+    color: white; 
+    backdrop-filter: blur(10px);
+    margin-bottom: 1.5rem;
   }
 
   .hero-title {
-    font-size: 3rem; font-weight: 800; color: var(--color-text-main); margin-bottom: 1.5rem;
+    font-size: 3rem; 
+    font-weight: 800; 
+    color: white; 
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
   }
   
+  /* Light gradient for the highlighted text */
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, #E9D5FF, #C4B5FD);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
   }
 
-  .hero-subtitle { font-size: 1.25rem; color: var(--color-text-muted); max-width: 600px; margin: 0 auto; }
+  .hero-subtitle { 
+    font-size: 1.25rem; 
+    color: #E9D5FF; /* Light purple text */
+    max-width: 700px; 
+    margin: 0 auto; 
+    line-height: 1.6;
+  }
 
   /* Split Section */
-  .split-section { padding: 2rem 0 6rem 0; position: relative; z-index: 1; }
+  .split-section { padding: 4rem 0 6rem 0; position: relative; z-index: 1; }
   .split-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; }
 
-  /* Premium Cards */
+  /* Premium Cards (Glassmorphism) */
   .split-card {
     display: flex; flex-direction: column; border-radius: 2rem; overflow: hidden;
     text-decoration: none; color: inherit; transition: all 0.4s ease; padding: 2.5rem;
@@ -134,8 +168,11 @@ import Footer from '../components/Footer.astro';
   .doctor-theme .card-action { color: #0284C7; }
   .split-card:hover .card-action { gap: 1rem; }
 
+  /* Responsive */
   @media (min-width: 768px) {
-    .hero-title { font-size: 4rem; }
+    .hero { padding: 10rem 0 8rem 0; }
+    .hero-title { font-size: 4.5rem; }
     .split-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .desktop-break { display: block; }
   }
 </style>
