@@ -36,8 +36,6 @@ import Footer from '../components/Footer.astro';
 
         <!-- Image Content (Right Side, Behind Text) -->
         <div class="hero-image-wrapper reveal reveal-delay-3">
-          <!-- The new glow effect behind the image -->
-          <div class="image-backglow"></div>
           <img src="/images/hero-doctor.png" alt="YerosCare Doctor Profile" class="hero-image" />
         </div>
 
@@ -91,6 +89,7 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     display: flex;
     align-items: center;
+    /* Added padding top to ensure space for the fixed header */
     padding: 140px 0 0 0; 
   }
 
@@ -118,9 +117,9 @@ import Footer from '../components/Footer.astro';
   /* ── HERO TEXT CONTENT ── */
   .hero-content {
     position: relative;
-    z-index: 10; 
+    z-index: 10; /* Keeps text above the image */
     max-width: 800px;
-    padding-bottom: 40px; 
+    padding-bottom: 40px; /* Space between text and bottom on mobile */
   }
 
   .hero-eyebrow {
@@ -134,7 +133,7 @@ import Footer from '../components/Footer.astro';
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.2rem); 
+    font-size: clamp(2.5rem, 5vw, 4.2rem); /* Slightly smaller title */
     color: var(--white);
     margin-bottom: 24px;
     line-height: 1.1;
@@ -150,7 +149,7 @@ import Footer from '../components/Footer.astro';
     font-weight: 300;
   }
 
-  /* ── HERO IMAGE (Mobile View) ── */
+  /* ── HERO IMAGE (Mobile View - Below text) ── */
   .hero-image-wrapper {
     position: relative;
     z-index: 1; 
@@ -166,12 +165,7 @@ import Footer from '../components/Footer.astro';
     height: auto;
     mask-image: linear-gradient(to top, transparent 0%, black 15%);
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
-    position: relative;
-    z-index: 2;
   }
-
-  /* Hide backglow on mobile */
-  .image-backglow { display: none; }
 
   /* Scroll Hint */
   .hero-scroll-hint {
@@ -183,10 +177,10 @@ import Footer from '../components/Footer.astro';
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollPulse 2s ease-in-out infinite; }
   @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
 
-  /* ── DESKTOP LAYOUT ── */
+  /* ── DESKTOP LAYOUT (Image on the right, behind text) ── */
   @media (min-width: 1024px) {
     .hero {
-      padding: 160px 0 0 0; 
+      padding: 160px 0 0 0; /* Extra top padding on desktop */
     }
 
     .hero-layout {
@@ -201,45 +195,33 @@ import Footer from '../components/Footer.astro';
       padding-bottom: 80px;
     }
     
-    .hero-body { margin: 0; }
+    .hero-body {
+      margin: 0; 
+    }
 
-    /* Image Wrapper */
+    /* Sizing by width, capping height */
     .hero-image-wrapper {
       position: absolute;
       right: -5%; 
-      bottom: 0; 
-      width: 500px; 
+      bottom: 0; /* Anchored to bottom */
+      width: 500px; /* Large, but slightly smaller than 550px */
       max-width: 50vw;
       margin-top: 0;
       display: flex;
       justify-content: flex-end;
     }
-
-    /* THE NEW GLOW EFFECT */
-    .image-backglow {
-      display: block;
-      position: absolute;
-      top: 10%;
-      left: -30%; /* Pushes the glow out to the left */
-      width: 100%;
-      height: 80%;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, transparent 65%);
-      filter: blur(50px); /* Softens the glow heavily */
-      z-index: 1; /* Behind the image */
-      pointer-events: none;
-    }
     
     .hero-image {
       width: 100%;
       height: auto;
-      max-height: 80vh; 
+      max-height: 80vh; /* Caps the height so it never hits the header */
       object-fit: contain;
       object-position: bottom right;
       
-      /* WIDER MASK GRADIENT for a smoother fade */
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 15%, black 40%, black 100%), 
+      /* Fades edges seamlessly */
+      mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
                   linear-gradient(to top, transparent 0%, black 15%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 15%, black 40%, black 100%), 
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
                           linear-gradient(to top, transparent 0%, black 15%);
       -webkit-mask-composite: source-in; 
       mask-composite: intersect;
