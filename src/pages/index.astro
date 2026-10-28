@@ -1,290 +1,207 @@
 ---
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
-
-const stores = [
-  { href: __APPSTORE_URL__, line: 'Download on the', name: 'App Store' },
-  { href: __PLAY_URL__, line: 'Get it on', name: 'Google Play' },
-];
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout
-  title="YerosCare: see a doctor online, around your day"
-  description="Answer a few guided questions, get pointed to a suitable doctor or specialist, and book a video, voice, chat or home-service consultation in the YerosCare app."
-  page="patients"
+<Layout 
+  title="YerosCare - Speak with a Doctor Online" 
+  description="Connect with trusted doctors online. Consultations that fit your day, wherever you are."
 >
-  <!-- ═════ AWARENESS: why does this matter to me? ═════ -->
+  <!-- We pass audience="home" so neither toggle is highlighted in the header -->
+  <Header audience="home" />
 
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <h1>See a doctor online, around your day.</h1>
-        <p class="lede">
-          Answer a few guided questions, get pointed to a suitable doctor or specialist, and book a
-          time that works for you.
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <h1 class="hero-title">Healthcare that fits your life.</h1>
+        <p class="hero-subtitle">
+          YerosCare connects patients with trusted doctors for online consultations, 
+          and helps doctors turn enquiries into paid consultations. 
         </p>
-        <div class="hero-actions">
-          <div class="stores">
-            {
-              stores.map((s) => (
-                <a class="store" href={s.href}>
-                  <span>{s.line}</span>
-                  <strong>{s.name}</strong>
-                </a>
-              ))
-            }
-          </div>
-          <a class="btn btn-outline" href="#how-it-works">How it works</a>
-        </div>
-        <p class="hero-note"><b>Every doctor's MDCN licence is verified</b> before they appear.</p>
       </div>
+    </section>
 
-      <!--
-        This phone is an illustration. When you have real screenshots, save one as
-        public/phone-patient.webp and replace the whole <div class="phone-wrap"> block with:
-        <img src="/phone-patient.webp" alt="..." width="560" height="1100" />
-      -->
-      <div class="phone-wrap">
-        <div class="phone" role="img" aria-label="Illustration of a YerosCare doctor screen showing services and available times">
-          <div class="phone-screen" aria-hidden="true">
-            <div class="phone-row">
-              <span class="avatar"></span>
-              <span class="skel-lines"><span class="skel"></span><span class="skel" style="width: 60%"></span></span>
+    <!-- The Split / Fork in the Road -->
+    <section class="split-section">
+      <div class="container split-grid">
+        
+        <!-- Patient Card -->
+        <a href="/patients" class="split-card patient-card">
+          <div class="card-image-wrapper">
+            <!-- Replace with actual patient image in public/images -->
+            <div class="placeholder-image patient-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </div>
-            <p class="phone-label">Services</p>
-            <ul class="chips">
-              <li class="chip">Video</li>
-              <li class="chip">Voice</li>
-              <li class="chip">Chat</li>
-              <li class="chip">Home service</li>
-            </ul>
-            <p class="phone-label">Available times</p>
-            <ul class="chips">
-              <li class="slot">Mon 9:00</li>
-              <li class="slot">Wed 14:30</li>
-              <li class="slot">Fri 17:00</li>
-            </ul>
-            <span class="phone-btn">Book</span>
           </div>
-        </div>
-        <p class="caption">Illustrative screen</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap benefits">
-    <div class="benefit">
-      <h3>Less travel, less disruption</h3>
-      <p>Consult by video, voice or chat from wherever you are.</p>
-    </div>
-    <div class="benefit">
-      <h3>The right doctor, faster</h3>
-      <p>Guided questions point you to a suitable doctor or specialist.</p>
-    </div>
-    <div class="benefit">
-      <h3>Your records stay with you</h3>
-      <p>Read your consultation notes and download your prescriptions in the app.</p>
-    </div>
-  </div>
-
-  <!-- ═════ CONSIDERATION: would this work for me? ═════ -->
-
-  <section class="section section-tint" id="how-it-works">
-    <div class="wrap split">
-      <div>
-        <h2>How it works</h2>
-        <p>From signing in to your prescription, everything happens in the app.</p>
-      </div>
-      <ol class="steps">
-        <li>
-          <div>
-            <h3>Sign in with your email</h3>
-            <p>Use your email address to create your account.</p>
+          <div class="card-content">
+            <h2>I am a Patient</h2>
+            <p>Speak with a doctor online. Explore consultations that fit your schedule, wherever you are.</p>
+            <span class="card-cta">Find a Doctor &rarr;</span>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>Answer a few guided questions</h3>
-            <p>
-              The guided triage helps point you to a suitable doctor or specialist. It does not give
-              a diagnosis.
-            </p>
+        </a>
+
+        <!-- Doctor Card -->
+        <a href="/doctors" class="split-card doctor-card">
+          <div class="card-image-wrapper">
+            <!-- Replace with actual doctor image in public/images -->
+            <div class="placeholder-image doctor-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+            </div>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>Choose a doctor, a service and a time</h3>
-            <p>
-              See each doctor's services, fees and available times before you book. You pay in the
-              app.
-            </p>
+          <div class="card-content">
+            <h2>I am a Doctor</h2>
+            <p>Turn suitable enquiries into consultations. Join YerosCare and connect with patients seeking your expertise.</p>
+            <span class="card-cta">Apply to Join &rarr;</span>
           </div>
-        </li>
-        <li>
-          <div>
-            <h3>Consult, then keep your records</h3>
-            <p>Your consultation notes and prescriptions are in the app whenever you need them.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
+        </a>
 
-  <section class="section" id="doctors">
-    <div class="wrap split">
-      <div>
-        <h2>Licensed doctors, verified before they appear</h2>
       </div>
-      <div>
-        <p>
-          Every doctor gives their professional details and MDCN licence number. We verify the
-          licence before patients can see their profile.
-        </p>
-        <ul class="ticks">
-          <li>Doctors choose their own working days and hours, so the availability you see is theirs.</li>
-          <li>Each doctor sets their own fee for every service, and you see it before you pay.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="section section-tint" id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Choose how you want to talk</h2>
-      </div>
-      <div class="tiles">
-        <div class="tile">
-          <h3>Video</h3>
-          <p>See and speak to your doctor from your phone.</p>
-        </div>
-        <div class="tile">
-          <h3>Voice</h3>
-          <p>A phone call with your doctor, inside the app.</p>
-        </div>
-        <div class="tile">
-          <h3>Chat</h3>
-          <p>Write to your doctor instead of calling.</p>
-        </div>
-        <div class="tile">
-          <h3>Home service</h3>
-          <p>
-            Some doctors visit you at home. They list the areas they cover, so you can check before
-            you book.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="records">
-    <div class="wrap split split-even">
-      <div>
-        <h2>Your notes and prescriptions stay with you</h2>
-        <p>
-          After a consultation, read your doctor's notes in the app. Download your prescriptions and
-          share them with a pharmacy.
-        </p>
-      </div>
-      <div>
-        <div class="doc-card" role="img" aria-label="Illustration of a consultation note and prescription with download and share buttons">
-          <h3>Consultation notes</h3>
-          <span class="skel"></span>
-          <span class="skel"></span>
-          <h3>Prescription</h3>
-          <div class="doc-actions">
-            <span class="chip">Download</span>
-            <span class="chip">Share with pharmacy</span>
-          </div>
-        </div>
-        <p class="caption">Illustrative screen</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-tint" id="safety">
-    <div class="wrap">
-      <div class="notice">
-        <h2>Is online care right for you?</h2>
-        <p>
-          Online consultations suit many everyday concerns and follow-up conversations. They cannot
-          replace an in-person examination when you need one, and they are not for emergencies. If it
-          is urgent, go to the nearest hospital.
-        </p>
-        <p>
-          Our guided questions help you choose a doctor. They do not replace a doctor's advice.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═════ DECISION: what happens next? ═════ -->
-
-  <section class="section" id="faq">
-    <div class="wrap split">
-      <div>
-        <h2>Questions people ask</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>How do I pay?</summary>
-          <p>You pay in the app when you book.</p>
-        </details>
-        <details>
-          <summary>Who sets the price?</summary>
-          <p>
-            Each doctor sets their own fees. You see the fee for every service before you book.
-          </p>
-        </details>
-        <details>
-          <summary>Can I cancel?</summary>
-          <p>
-            You can request a cancellation for a service you have paid for that has not taken place.
-            We tell the doctor, who is expected to respond within 48 hours. If they do not respond,
-            your refund goes ahead.
-          </p>
-        </details>
-        <details>
-          <summary>Are the doctors licensed?</summary>
-          <p>
-            Yes. We verify each doctor's MDCN licence before their profile becomes visible to
-            patients.
-          </p>
-        </details>
-        <details>
-          <summary>Does the guided triage diagnose me?</summary>
-          <p>
-            No. It helps point you to a suitable doctor or specialist. Your doctor gives the advice.
-          </p>
-        </details>
-        <details>
-          <summary>What if it is an emergency?</summary>
-          <p>YerosCare is not for emergencies. Go to the nearest hospital.</p>
-        </details>
-        <details>
-          <summary>Which phones does it work on?</summary>
-          <p>YerosCare is available for iPhone and Android.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-dark on-dark" id="get">
-    <div class="wrap">
-      <h2>Ready to see a doctor?</h2>
-      <p class="lede">
-        Download YerosCare, sign in with your email and answer a few guided questions. We will point
-        you toward a suitable doctor.
-      </p>
-      <div class="stores">
-        {
-          stores.map((s) => (
-            <a class="store" href={s.href}>
-              <span>{s.line}</span>
-              <strong>{s.name}</strong>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <Footer />
 </Layout>
+
+<style>
+  /* Hero Section Styles */
+  .hero {
+    padding: 4rem 0 3rem 0;
+    text-align: center;
+    background-color: var(--color-bg-light);
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Split Section Styles */
+  .split-section {
+    padding: 3rem 0 6rem 0;
+  }
+
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 2rem;
+  }
+
+  /* Card Styles */
+  .split-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-white);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid #E5E7EB;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  .split-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-primary-light);
+    box-shadow: 0 10px 25px -5px rgba(74, 27, 122, 0.15);
+  }
+
+  .card-image-wrapper {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F3F4F6;
+  }
+
+  .patient-placeholder {
+    background-color: #EDE9FE; /* Light purple */
+    color: var(--color-primary);
+  }
+
+  .doctor-placeholder {
+    background-color: #E0F2FE; /* Light blue/teal for contrast */
+    color: #0284C7;
+  }
+
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-main);
+  }
+
+  .card-content p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Pushes the CTA to the bottom */
+  }
+
+  .card-cta {
+    font-weight: 700;
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .doctor-card .card-cta {
+    color: #0284C7; /* Match the doctor theme */
+  }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .hero {
+      padding: 6rem 0 5rem 0;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .split-grid {
+      grid-template-columns: 1fr 1fr; /* Side by side on desktop */
+      gap: 3rem;
+    }
+
+    .card-image-wrapper {
+      height: 250px; /* Taller images on desktop */
+    }
+  }
+</style>
