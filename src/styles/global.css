@@ -1,23 +1,33 @@
 /* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
-/* 1. Define Brand Variables */
 :root {
-  /* Deep Purple brand colors */
-  --color-primary: #4A1B7A; 
-  --color-primary-light: #6D33A3;
-  --color-primary-dark: #320F54;
+  /* Premium Deep Purple Palette */
+  --color-primary: #5B21B6; /* Richer purple */
+  --color-primary-light: #8B5CF6;
+  --color-primary-dark: #2E1065;
+  --color-primary-glow: rgba(91, 33, 182, 0.4);
   
-  /* Neutrals */
-  --color-text-main: #1F2937;
-  --color-text-muted: #4B5563;
-  --color-bg-light: #F9FAFB;
+  /* Backgrounds */
+  --color-bg-base: #FAFAFB; /* Very slight off-white for premium feel */
   --color-bg-white: #FFFFFF;
+  --color-bg-deep: #0F0A1C; /* Midnight purple for deep sections */
+  
+  /* Text */
+  --color-text-main: #111827;
+  --color-text-muted: #6B7280;
   
   /* Typography */
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 20px var(--color-primary-glow);
 }
 
-/* 2. CSS Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -29,61 +39,78 @@ html {
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   color: var(--color-text-main);
-  background-color: var(--color-bg-white);
+  background-color: var(--color-bg-base);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  padding-top: 72px; /* Header offset */
 }
 
-/* 3. Mobile Responsiveness for Media */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em; /* Tight tracking for modern feel */
+  line-height: 1.2;
+}
+
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* 4. Responsive Layout Container */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem; /* Adds breathing room on mobile edges */
+  padding: 0 1.5rem;
 }
 
-/* 5. Global Button Styles (Deep Purple) */
+/* Premium Buttons */
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px; /* Pill shape */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
   font-weight: 600;
-  text-align: center;
+  font-size: 1rem;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   border: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), #7C3AED);
   color: white;
+  box-shadow: 0 4px 14px var(--color-primary-glow);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-primary-glow);
 }
 
 .btn-outline {
-  background-color: transparent;
+  background: transparent;
   color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-primary-light);
 }
 
 .btn-outline:hover {
-  background-color: var(--color-bg-light);
+  background: rgba(91, 33, 182, 0.05);
+  border-color: var(--color-primary);
 }
 
-/* 6. Utility for Sticky Header offset */
-body {
-  padding-top: 70px; /* Adjust based on your final header height */
+/* Glassmorphism Card Utility */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-md);
 }
