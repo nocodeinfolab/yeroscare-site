@@ -1,0 +1,148 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    
+    <!-- Column 1: Brand & Description -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">YerosCare</a>
+      <p class="footer-desc">
+        Speak with a doctor online. Consultations that fit your day, wherever you are.
+      </p>
+    </div>
+
+    <!-- Column 2: Navigation -->
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/patients">For Patients</a></li>
+        <li><a href="/doctors">For Doctors</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Legal & Support -->
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <ul>
+        <!-- Direct link to your existing legal subdomain -->
+        <li><a href="https://legal.yeroscare.com" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+        <li><a href="https://legal.yeroscare.com" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 4: App Downloads -->
+    <div class="footer-apps">
+      <h4>Get the App</h4>
+      <div class="app-badges">
+        <!-- Replace src with your actual badge image paths in the public/images folder -->
+        <a href="#" class="app-badge-link">
+          <img src="/images/app-store-badge.svg" alt="Download on the App Store" class="app-badge" />
+        </a>
+        <a href="#" class="app-badge-link">
+          <img src="/images/play-store-badge.svg" alt="Get it on Google Play" class="app-badge" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar: Copyright -->
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; {new Date().getFullYear()} YerosCare. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-primary-dark);
+    color: white;
+    padding-top: 4rem;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack on mobile */
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Typography */
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #E9D5FF; /* Light purple for headers */
+  }
+
+  .footer-logo {
+    display: inline-block;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+  }
+
+  .footer-desc {
+    color: #D1D5DB;
+    font-size: 0.95rem;
+    max-width: 300px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-links a {
+    color: #D1D5DB;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
+  }
+
+  .footer-links a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+
+  /* App Badges */
+  .app-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .app-badge {
+    height: 40px;
+    width: auto;
+    /* If you don't have the SVGs yet, a border makes them visible */
+    border-radius: 6px;
+  }
+
+  /* Bottom Bar */
+  .footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #9CA3AF;
+  }
+
+  /* Desktop Layout */
+  @media (min-width: 768px) {
+    .footer-container {
+      grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Brand gets more space */
+      gap: 3rem;
+    }
+  }
+</style>
