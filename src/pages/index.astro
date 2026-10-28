@@ -36,8 +36,6 @@ import Footer from '../components/Footer.astro';
 
         <!-- Image Content (Right Side, Behind Text) -->
         <div class="hero-image-wrapper reveal reveal-delay-3">
-          <!-- The new glow effect behind the image -->
-          <div class="image-backglow"></div>
           <img src="/images/hero-doctor.png" alt="YerosCare Doctor Profile" class="hero-image" />
         </div>
 
@@ -91,10 +89,10 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 140px 0 0 0; 
+    padding: 120px 0 80px;
   }
 
-  /* Glow Orbs & Grid */
+  /* Glow Orbs & Grid (Keep these for the premium texture) */
   .hero-grid {
     position: absolute; inset: 0;
     background-image: linear-gradient(rgba(167, 139, 250, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
@@ -112,15 +110,13 @@ import Footer from '../components/Footer.astro';
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100%;
   }
 
   /* ── HERO TEXT CONTENT ── */
   .hero-content {
     position: relative;
-    z-index: 10; 
+    z-index: 10; /* Keeps text above the image */
     max-width: 800px;
-    padding-bottom: 40px; 
   }
 
   .hero-eyebrow {
@@ -134,7 +130,7 @@ import Footer from '../components/Footer.astro';
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.2rem); 
+    font-size: clamp(3rem, 7vw, 5.5rem);
     color: var(--white);
     margin-bottom: 24px;
     line-height: 1.1;
@@ -142,7 +138,7 @@ import Footer from '../components/Footer.astro';
   .hero-title em { font-style: italic; color: var(--purple-accent); }
 
   .hero-body {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: rgba(255,255,255,0.7);
     max-width: 600px; 
     margin: 0 auto; 
@@ -150,28 +146,22 @@ import Footer from '../components/Footer.astro';
     font-weight: 300;
   }
 
-  /* ── HERO IMAGE (Mobile View) ── */
+  /* ── HERO IMAGE (Mobile View - Below text) ── */
   .hero-image-wrapper {
     position: relative;
-    z-index: 1; 
+    z-index: 1; /* Behind text */
     width: 100%;
-    max-width: 300px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+    max-width: 320px;
+    margin-top: 48px;
   }
   
   .hero-image {
     width: 100%;
     height: auto;
+    /* Fades the bottom of the image into the background */
     mask-image: linear-gradient(to top, transparent 0%, black 15%);
     -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
-    position: relative;
-    z-index: 2;
   }
-
-  /* Hide backglow on mobile */
-  .image-backglow { display: none; }
 
   /* Scroll Hint */
   .hero-scroll-hint {
@@ -183,12 +173,8 @@ import Footer from '../components/Footer.astro';
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent); animation: scrollPulse 2s ease-in-out infinite; }
   @keyframes scrollPulse { 0%, 100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
 
-  /* ── DESKTOP LAYOUT ── */
+  /* ── DESKTOP LAYOUT (Image on the right, behind text) ── */
   @media (min-width: 1024px) {
-    .hero {
-      padding: 160px 0 0 0; 
-    }
-
     .hero-layout {
       flex-direction: row;
       justify-content: flex-start;
@@ -197,57 +183,36 @@ import Footer from '../components/Footer.astro';
     }
 
     .hero-content {
-      max-width: 55%;
-      padding-bottom: 80px;
+      max-width: 60%; /* Takes up left side */
     }
     
-    .hero-body { margin: 0; }
-
-    /* Image Wrapper */
-    .hero-image-wrapper {
-      position: absolute;
-      right: -5%; 
-      bottom: 0; 
-      width: 500px; 
-      max-width: 50vw;
-      margin-top: 0;
-      display: flex;
-      justify-content: flex-end;
+    .hero-body {
+      margin: 0; /* Align left */
     }
 
-    /* THE NEW GLOW EFFECT */
-    .image-backglow {
-      display: block;
+    .hero-image-wrapper {
       position: absolute;
-      top: 10%;
-      left: -30%; /* Pushes the glow out to the left */
-      width: 100%;
-      height: 80%;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.35) 0%, transparent 65%);
-      filter: blur(50px); /* Softens the glow heavily */
-      z-index: 1; /* Behind the image */
-      pointer-events: none;
+      right: -5%; /* Pulls image slightly off-screen to the right */
+      bottom: -50px;
+      width: 550px; /* Large size on desktop */
+      max-width: 50vw;
+      margin-top: 0;
     }
     
     .hero-image {
-      width: 100%;
-      height: auto;
-      max-height: 80vh; 
-      object-fit: contain;
-      object-position: bottom right;
-      
-      /* WIDER MASK GRADIENT for a smoother fade */
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 15%, black 40%, black 100%), 
-                  linear-gradient(to top, transparent 0%, black 15%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 15%, black 40%, black 100%), 
-                          linear-gradient(to top, transparent 0%, black 15%);
+      /* Fades the left and bottom edges so it blends seamlessly behind the text */
+      mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
+                  linear-gradient(to top, transparent 0%, black 20%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%), 
+                          linear-gradient(to top, transparent 0%, black 20%);
+      /* Webkit requires this to combine multiple masks */
       -webkit-mask-composite: source-in; 
       mask-composite: intersect;
     }
   }
 
-  /* ── SPLIT CARDS SECTION ── */
-  .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; }
+  /* ── SPLIT CARDS SECTION (Remains the same) ── */
+  .split-section { padding: 100px 5vw; background: var(--cream); position: relative; z-index: 2; margin-top: -40px; }
   .split-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
 
   .split-card {
